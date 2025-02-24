@@ -1,8 +1,12 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-light: #ffffff;
+  --font-dark: #000000;
+  --border-color-primary: #f29104;
+  --border-color-secondary: #614454;
   --bg-gradient-1: linear-gradient(132.02deg, #09162b 26.3%, #461837 144.63%);
+  --bg-gradient-1-hover: linear-gradient(320deg, #09162b 26.3%, #461837 144.63%);
   --bg-gradient-2: linear-gradient(91.07deg, #f29104 2.5%, #e95c0c 121.01%);
+  --bg-gradient-2-hover: linear-gradient(180deg, #f29104 2.5%, #e95c0c 121.01%);
 }
 
 * {
@@ -23,6 +27,27 @@ body {
   font-family: var(---font-manrope);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+button {
+  font-family: var(--font-manrope);
+  color: var(--font-dark);
+}
+
+.container {
+  width: 100%;
+  max-width: 1320px;
+  padding: 0 32px;
+  margin: auto;
 }
 
 header {

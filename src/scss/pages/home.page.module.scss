@@ -1,6 +1,34 @@
 .homePage {
   .section_1 {
-    min-height: 100dvh;
-    background: var(--bg-gradient-1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .section_1_content_left {
+      margin-left: 0;
+      margin-right: auto;
+      width: auto;
+      max-width: 524px;
+
+      h1 {
+        color: var(--font-light);
+        font-size: 42px;
+        font-weight: 800;
+        margin-bottom: 24px;
+      }
+
+      p {
+        color: var(--font-light);
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .btns {
+        margin-top: 24px;
+        display: flex;
+        gap: 16px;
+      }
+    }
   }
 }

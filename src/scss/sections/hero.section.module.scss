@@ -1,0 +1,22 @@
+.heroSection {
+  height: 100dvh;
+  background: var(--bg-gradient-1);
+  position: relative;
+
+  .sectionContent {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bgImg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 95%;
+    width: auto;
+    object-fit: contain;
+  }
+}

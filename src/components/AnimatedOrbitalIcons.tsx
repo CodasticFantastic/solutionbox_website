@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import styles from "@/scss/components/AnimatedOrbitalIcons.module.scss";
 
-type IconData = {
+export type AnimatedOrbitalIcon = {
   id: number;
   src: string;
   alt: string;
@@ -19,7 +19,8 @@ interface AnimatedOrbitalIconsProps {
   centerCircleSize: number;
   centerLogoSrc?: string;
   orbits?: number[]; // [0.1, 0.2, 0.3] -- Orbits table
-  icons?: IconData[];
+  orbitsColor?: string;
+  icons?: AnimatedOrbitalIcon[];
 }
 
 export default function AnimatedOrbitalIcons({
@@ -29,6 +30,7 @@ export default function AnimatedOrbitalIcons({
   centerLogoSize,
   centerCircleSize,
   orbits = [0.3, 0.4, 0.5],
+  orbitsColor = "#000000",
   icons = [],
 }: AnimatedOrbitalIconsProps) {
   const containerStyle: React.CSSProperties = {
@@ -53,6 +55,7 @@ export default function AnimatedOrbitalIcons({
             style={{
               width: `${radiusPx * 2}px`,
               height: `${radiusPx * 2}px`,
+              border: `1px solid ${orbitsColor}`,
             }}
           />
         );
