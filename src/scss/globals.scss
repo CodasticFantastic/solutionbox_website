@@ -1,9 +1,16 @@
 :root {
-  // Colors
+  // Font Colors
   --font-light: #ffffff;
   --font-dark: #000000;
+  --font-primary: #db702e;
+  --font-secondary: #55595c;
+
+  // Border Colors
   --border-color-primary: #f29104;
   --border-color-secondary: #614454;
+
+  //Background Colors
+  --bg-light: #ffffff;
   --bg-gradient-1: linear-gradient(132.02deg, #09162b 26.3%, #461837 144.63%);
   --bg-gradient-1-hover: linear-gradient(320deg, #09162b 26.3%, #461837 144.63%);
   --bg-gradient-2: linear-gradient(91.07deg, #f29104 2.5%, #e95c0c 121.01%);

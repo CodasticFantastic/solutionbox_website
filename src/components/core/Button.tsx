@@ -4,11 +4,12 @@ import Link from "next/link";
 interface Button {
   children: React.ReactNode;
   variant: "ORANGE" | "DARK";
+  customStyles?: Record<string, string>;
   linkTo?: string;
   openLinkInNewTab?: true;
 }
 
-export default function Button({ children, variant, linkTo, openLinkInNewTab }: Button) {
+export default function Button({ children, variant, linkTo, openLinkInNewTab, customStyles }: Button) {
   let variantClass: string;
 
   switch (variant) {
@@ -24,10 +25,14 @@ export default function Button({ children, variant, linkTo, openLinkInNewTab }: 
     <>
       {linkTo ? (
         <Link href={linkTo} target={openLinkInNewTab && "_blank"}>
-          <button className={`${styles.btn} ${variantClass}`}>{children}</button>
+          <button className={`${styles.btn} ${variantClass}`} style={customStyles}>
+            {children}
+          </button>
         </Link>
       ) : (
-        <button className={`${styles.btn} ${variantClass}`}>{children}</button>
+        <button className={`${styles.btn} ${variantClass}`} style={customStyles}>
+          {children}
+        </button>
       )}
     </>
   );

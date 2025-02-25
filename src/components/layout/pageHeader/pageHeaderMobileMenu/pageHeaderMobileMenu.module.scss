@@ -1,0 +1,32 @@
+.mobileMenu {
+  width: 100%;
+  position: absolute;
+  top: 92px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  // Close/Open behavior
+  height: 0px;
+  overflow: hidden;
+  pointer-events: none;
+  transition: 0.15s linear;
+
+  &.open {
+    height: 516px;
+    overflow: auto;
+    pointer-events: all;
+  }
+
+  .mobileMenuFooter {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
