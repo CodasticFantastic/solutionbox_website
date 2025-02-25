@@ -49,9 +49,8 @@
 
 @media (max-width: 1023px) {
   .heroSection {
+    padding-bottom: 64px;
     height: unset;
-    // min-height: 50dvh;
-    // height: unset;
-    // max-height: unset !important;
+    max-height: unset !important;
   }
 }
