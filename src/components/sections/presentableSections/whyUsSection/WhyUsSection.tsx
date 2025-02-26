@@ -1,9 +1,9 @@
-import styles from "@/scss/pages/home.page.module.scss";
-import AnimatedOrbsIconsHomePage2, { AnimatedOrbitalIconWithText } from "./components/AnimatedOrbsIconsHomePage2/AnimatedOrbsIconsHomePage2";
+import styles from "./WhyUsSection.module.scss";
+import AnimatedOrbsIconsHomePage2, { AnimatedOrbitalIconWithText as WhyUsSection } from "./whyUsAnimatedOrbsIcons/WhyUSAnimatedOrbsIcons";
 import Image from "next/image";
 
 export default function HomePage3rdSection() {
-  const icons: AnimatedOrbitalIconWithText[] = [
+  const icons: WhyUsSection[] = [
     {
       id: 1,
       src: "/icons/specialist-icon-light.svg",
@@ -44,21 +44,24 @@ export default function HomePage3rdSection() {
   ];
 
   return (
-    <section className={styles.section_3}>
-      <h2>Dlaczego my?</h2>
-      <div className={styles.orbs}>
-        <AnimatedOrbsIconsHomePage2 icons={icons} />
-      </div>
-      <div className="container">
-        <div className={styles.mobileIcons}>
-          {icons.map((icon) => (
-            <div key={icon.id} className={styles.icon}>
-              <Image src={icon.src} alt={icon.alt} width={58} height={58} />
-              <p>{icon.text}</p>
-            </div>
-          ))}
+    <div className={styles.whyUsSectionWrapper}>
+      <Image className={styles.sectionDivider} src="/imgs/section2_bottom.svg" width={254} height={149} alt="Solution Box Logo" />
+      <section className={styles.whyUsSection}>
+        <h2>Dlaczego my?</h2>
+        <div className={styles.orbs}>
+          <AnimatedOrbsIconsHomePage2 icons={icons} />
         </div>
-      </div>
-    </section>
+        <div className="container">
+          <div className={styles.mobileIcons}>
+            {icons.map((icon) => (
+              <div key={icon.id} className={styles.icon}>
+                <Image src={icon.src} alt={icon.alt} width={58} height={58} />
+                <p>{icon.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

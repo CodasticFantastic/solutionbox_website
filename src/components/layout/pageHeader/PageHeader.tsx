@@ -1,6 +1,6 @@
 import styles from "./pageHeader.module.scss";
 import Image from "next/image";
-import Button from "../../core/Button";
+import Button from "../../core/button/Button";
 import Link from "next/link";
 import PageHeaderNavLink from "./pageHeaderNavLink/PageHeaderNavLink";
 import PageHeaderMobileMenu from "./pageHeaderMobileMenu/PageHeaderMobileMenu";

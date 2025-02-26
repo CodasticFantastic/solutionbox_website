@@ -1,4 +1,4 @@
-import styles from "@/scss/sections/hero.section.module.scss";
+import styles from "./basicHeroSection.module.scss";
 import Image from "next/image";
 
 interface HeroSection {
@@ -7,7 +7,7 @@ interface HeroSection {
   maxSectionHeigh?: number;
 }
 
-export default function HeroSection({ children, className, maxSectionHeigh = 880 }: HeroSection) {
+export default function BasicHeroSection({ children, className, maxSectionHeigh = 880 }: HeroSection) {
   return (
     <section className={`${styles.heroSection} ${className}`} style={{ maxHeight: maxSectionHeigh }}>
       <div className={`container ${styles.sectionContent}`}>{children}</div>

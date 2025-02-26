@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "./pageHeaderMobileMenu.module.scss";
 import PageHeaderNavLink from "../pageHeaderNavLink/PageHeaderNavLink";
-import Button from "@/components/core/Button";
+import Button from "@/components/core/button/Button";
 
 type MenuConfig = {
   text: string;

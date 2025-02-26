@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import styles from "./AnimatedOrbsIconsHomePage2.module.scss";
+import styles from "./WhyUsAnimatedOrbsIcons.module.scss";
 
 export type AnimatedOrbitalIconWithText = {
   id: number;

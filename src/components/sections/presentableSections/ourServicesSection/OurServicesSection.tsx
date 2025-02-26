@@ -1,10 +1,10 @@
-import Button from "@/components/core/Button";
-import styles from "@/scss/pages/home.page.module.scss";
+import Button from "@/components/core/button/Button";
+import styles from "./ourServicesSection.module.scss";
 import Image from "next/image";
 
-export default function HomePage2ndSection() {
+export default function OurServicesSection() {
   return (
-    <section className={styles.section_2}>
+    <section className={styles.ourServicesSection}>
       <div className={`${styles.sectionContainer} container`}>
         {/* Left Side */}
         <div className={styles.leftSide}>
@@ -74,7 +74,6 @@ export default function HomePage2ndSection() {
           </div>
         </div>
       </div>
-      <Image className={styles.sectionDivider} src="/imgs/section2_bottom.svg" width={254} height={149} alt="Solution Box Logo" />
     </section>
   );
 }

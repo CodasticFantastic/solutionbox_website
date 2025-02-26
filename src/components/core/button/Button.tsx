@@ -1,4 +1,4 @@
-import styles from "@/scss/components/core/button.module.scss";
+import styles from "./button.module.scss";
 import Link from "next/link";
 
 interface Button {

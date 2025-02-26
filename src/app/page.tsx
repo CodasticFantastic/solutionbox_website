@@ -1,13 +1,13 @@
-import HomePage2ndSection from "@/pages/homePage/HomePage2ndSection";
-import HomePage3rdSection from "@/pages/homePage/HomePage3rdSection";
-import HomePageHeroSection from "@/pages/homePage/HomePageHeroSection";
+import OurServicesSection from "@/components/sections/presentableSections/ourServicesSection/OurServicesSection";
+import WhyUsSection from "@/components/sections/presentableSections/whyUsSection/WhyUsSection";
+import HomePageHeroSection from "@/components/sections/presentableSections/homePageHeroSection/HomePageHeroSection";
 
 export default function Home() {
   return (
     <main>
       <HomePageHeroSection />
-      <HomePage2ndSection />
-      <HomePage3rdSection />
+      <OurServicesSection />
+      <WhyUsSection />
     </main>
   );
 }
