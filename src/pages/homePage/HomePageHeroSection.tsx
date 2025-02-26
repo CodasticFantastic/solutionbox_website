@@ -1,6 +1,6 @@
 "use client";
 
-import AnimatedOrbitalIcons from "@/pages/homePage/components/AnimatedOrbsIconsHomePage/AnimatedOrbsIcons.homePage";
+import AnimatedOrbsIconsHomePage from "@/pages/homePage/components/AnimatedOrbsIconsHomePage/AnimatedOrbsIconsHomePage";
 import Button from "@/components/core/Button";
 import HeroSection from "@/components/sections/HeroSection";
 import styles from "@/scss/pages/home.page.module.scss";
@@ -22,7 +22,7 @@ export default function HomePageHeroSection() {
             </Button>
           </div>
         </div>
-        <AnimatedOrbitalIcons />
+        <AnimatedOrbsIconsHomePage />
       </HeroSection>
     </div>
   );

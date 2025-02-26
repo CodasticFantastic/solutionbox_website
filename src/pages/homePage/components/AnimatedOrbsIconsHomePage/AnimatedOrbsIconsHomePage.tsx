@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import styles from "./AnimatedOrbsIcons.homePage.module.scss";
+import styles from "./AnimatedOrbsIconsHomePage.module.scss";
 
 export type AnimatedOrbitalIcon = {
   id: number;
@@ -18,7 +18,7 @@ const icons: AnimatedOrbitalIcon[] = [
   { id: 5, src: "/icons/megaphone-icon-dark.svg", alt: "Megafon", angle: 40, orbitFraction: 1 },
 ];
 
-export default function AnimatedOrbitalIcons() {
+export default function AnimatedOrbsIconsHomePage() {
   return (
     <div className={styles.container}>
       {/* Central Circle */}
