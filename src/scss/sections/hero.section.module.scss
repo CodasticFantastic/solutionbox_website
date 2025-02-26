@@ -2,7 +2,7 @@
   height: 100dvh;
   background: var(--bg-gradient-1);
   position: relative;
-  margin-bottom: 32px;
+  // margin-bottom: 32px;
 
   .sectionContent {
     height: 100%;
@@ -23,6 +23,7 @@
 
   .sectionDivider {
     position: absolute;
+    z-index: 1;
     bottom: -33px;
     left: 50%;
     transform: translate(-50%, 0);
