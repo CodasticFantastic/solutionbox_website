@@ -8,6 +8,7 @@
   // Border Colors
   --border-color-primary: #f29104;
   --border-color-secondary: #614454;
+  --border-color-tertiary: #e0ecf2;
 
   //Background Colors
   --bg-light: #ffffff;
@@ -22,6 +23,10 @@
   --home-page-animated-orbs-1-icons-component-logo-bg-size: 160px;
   --home-page-animated-orbs-1-icons-component-logo-icon-size: 100px;
   --home-page-animated-orbs-1-icons-component-floating-icons-size: 58px;
+
+  // Home Page Animated Orbital Icons 2 Settings
+  --home-page-animated-orbs-2-icons-component-size: 980px;
+  --home-page-animated-orbs-2-icons-component-floating-icons-size: 58px;
 }
 
 // Home Page Animated Orbital Icons Settings Media Queries
@@ -42,6 +47,30 @@
     --home-page-animated-orbs-1-icons-component-floating-icons-size: 42px;
   }
 }
+
+// Home Page Animated Orbital Icons 2 Settings Media Queries
+@media (max-width: 1245px) {
+  :root {
+    --home-page-animated-orbs-2-icons-component-size: 680px;
+    --home-page-animated-orbs-2-icons-component-floating-icons-size: 58px;
+  }
+}
+
+// Home Page Animated Orbital Icons 2 Settings Media Queries
+@media (max-width: 1245px) {
+  :root {
+    --home-page-animated-orbs-2-icons-component-size: 680px;
+    --home-page-animated-orbs-2-icons-component-floating-icons-size: 58px;
+  }
+}
+
+@media (max-width: 970px) {
+  :root {
+    --home-page-animated-orbs-2-icons-component-size: 520px;
+    --home-page-animated-orbs-2-icons-component-floating-icons-size: 58px;
+  }
+}
+
 
 * {
   box-sizing: border-box;

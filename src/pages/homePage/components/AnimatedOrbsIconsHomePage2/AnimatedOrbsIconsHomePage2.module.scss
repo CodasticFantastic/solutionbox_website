@@ -1,0 +1,111 @@
+// Component Styling
+.container {
+  width: var(--home-page-animated-orbs-2-icons-component-size);
+  height: var(--home-page-animated-orbs-2-icons-component-size);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Static Circles (Orbits)
+.circle {
+  position: absolute;
+  border: 1px solid var(--border-color-tertiary);
+  border-radius: 50%;
+
+  &.circle1 {
+    width: calc(var(--home-page-animated-orbs-2-icons-component-size) * 0.6);
+    height: calc(var(--home-page-animated-orbs-2-icons-component-size) * 0.6);
+  }
+
+  &.circle2 {
+    width: calc(var(--home-page-animated-orbs-2-icons-component-size));
+    height: calc(var(--home-page-animated-orbs-2-icons-component-size));
+  }
+}
+
+// Icons
+.icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  // Pozycjonowanie ikon na orbicie
+  --radius: calc(var(--orbit-fraction) * #{var(--home-page-animated-orbs-2-icons-component-size)} / 2); // Obliczanie promienia orbity
+  --x: calc(cos(var(--angle) * 1deg) * var(--radius));
+  --y: calc(sin(var(--angle) * 1deg) * var(--radius));
+
+  transform: translate(var(--x), var(--y));
+
+  & > img {
+    width: var(--home-page-animated-orbs-2-icons-component-floating-icons-size);
+    height: var(--home-page-animated-orbs-2-icons-component-floating-icons-size);
+    object-fit: contain;
+  }
+
+  .iconContent {
+    position: relative;
+
+    p {
+      width: 120px;
+      color: #617787;
+    }
+
+    .LEFT {
+      position: absolute;
+      top: 45%;
+      left: -132px;
+      transform: translate(0, -50%);
+      text-align: right;
+    }
+
+    .RIGHT {
+      position: absolute;
+      top: 45%;
+      right: -132px;
+      transform: translate(0, -50%);
+      text-align: left;
+    }
+
+    .BOTTOM {
+      position: absolute;
+      bottom: -48px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      text-align: center;
+    }
+  }
+}
+
+@keyframes orbitAnimation {
+  0% {
+    transform: rotate(0deg) translateY(calc(var(--home-page-animated-orbs-2-icons-component-size) * 0.6 / 2)) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateY(calc(var(--home-page-animated-orbs-2-icons-component-size) * 0.6 / 2)) rotate(-360deg);
+  }
+}
+
+.floatingOrb {
+  width: 10px;
+  height: 10px;
+  background-color: var(--border-color-tertiary);
+  border-radius: 50%;
+
+  animation: orbitAnimation 4s ease-in-out infinite;
+}
+
+@media (max-width: 805px) {
+  .circle {
+    &.circle2 {
+      display: none;
+    }
+  }
+
+  .icon {
+    display: none;
+  }
+}
