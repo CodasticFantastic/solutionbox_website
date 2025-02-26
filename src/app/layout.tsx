@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "@/scss/globals.scss";
 import PageHeader from "@/components/layout/pageHeader/PageHeader";
+import PageFooter from "@/components/layout/pageFooter/PageFooter";
 
 const manropeFont = Manrope({
   variable: "--font-manrope",
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body className={`${manropeFont.variable}`}>
         <PageHeader />
         {children}
-        <footer>Footer</footer>
+        <PageFooter />
       </body>
     </html>
   );

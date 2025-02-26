@@ -20,3 +20,14 @@ p {
   margin-bottom: 0px;
   color: var(--text-dark);
 }
+
+a {
+  font-family: var(--font-manrope);
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 16px;
+
+  &:hover {
+    color: var(--font-primary);
+  }
+}
