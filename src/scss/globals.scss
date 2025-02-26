@@ -2,6 +2,7 @@
   // Font Colors
   --font-light: #ffffff;
   --font-dark: #18172e;
+  --font-dark-opacity: #18172ecc;
   --font-primary: #db702e;
   --font-secondary: #55595c;
 
@@ -28,23 +29,9 @@
 body {
   color: var(--font-dark);
   background: var(--bg-light);
-  font-family: var(---font-manrope);
+  font-family: var(--font-manrope);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-span,
-button {
-  font-family: var(--font-manrope);
-  color: var(--font-dark);
 }
 
 .container {
@@ -52,12 +39,4 @@ button {
   max-width: 1320px;
   padding: 0 32px;
   margin: auto;
-}
-
-header {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
 }
