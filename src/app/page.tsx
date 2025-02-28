@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main>
       <HomePageHeroSection />
-      <SectionDividerOrangeCircle />
+      <SectionDividerOrangeCircle variant="LIGHT_BLUE" />
       <OurServicesSection />
       <WhyUsSection />
       <DeliveringNewestTechSolutionsSection />
