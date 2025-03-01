@@ -5,13 +5,9 @@ import { useState } from "react";
 import styles from "./pageHeaderMobileMenu.module.scss";
 import PageHeaderNavLink from "../pageHeaderNavLink/PageHeaderNavLink";
 import Button from "@/components/core/button/Button";
+import { PageHeaderConfig } from "../pageHeader.types";
 
-type MenuConfig = {
-  text: string;
-  link: string;
-};
-
-export default function PageHeaderMobileMenu({ menuConfig }: { menuConfig: MenuConfig[] }) {
+export default function PageHeaderMobileMenu({ menuConfig }: { menuConfig: PageHeaderConfig[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

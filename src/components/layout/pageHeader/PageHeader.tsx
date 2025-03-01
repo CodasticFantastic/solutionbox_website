@@ -7,9 +7,9 @@ import Button from "../../core/button/Button";
 import Link from "next/link";
 import PageHeaderNavLink from "./pageHeaderNavLink/PageHeaderNavLink";
 import PageHeaderMobileMenu from "./pageHeaderMobileMenu/PageHeaderMobileMenu";
-import { PageHeaderBackgroundColor } from "./pageHeader.types";
+import { PageHeaderBackgroundColor, PageHeaderConfig } from "./pageHeader.types";
 
-const menuConfig = [
+const menuConfig: PageHeaderConfig[] = [
   { text: "Home", link: "/" },
   { text: "Produkty", link: "/produkty" },
   { text: "Usługi", link: "/uslugi" },
