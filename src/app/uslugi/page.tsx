@@ -1,4 +1,5 @@
 import SectionDividerOrangeCircle from "@/components/sections/basicSections/sectionDividerOrangeCircle/SectionDividerOrangeCircle";
+import ComplexSolutionsForYourBusiness from "@/components/sections/presentableSections/complexSolutionsForYourBusiness/ComplexSolutionsForYourBusiness";
 import OurServicesAccordionSection from "@/components/sections/presentableSections/ourServicesAccordionSection/OurServicesAccordionSection";
 import OurServicesOrbitalIconsSection from "@/components/sections/presentableSections/ourServicesOrbitalIconsSection/OurServicesOrbitalIconsSection";
 import ServicesPageHeroSection from "@/components/sections/presentableSections/servicesPageHeroSection/ServicesPageHeroSection";
@@ -16,6 +17,7 @@ export default function Uslugi() {
       <SectionDividerOrangeCircle variant="WHITE" />
       <OurServicesOrbitalIconsSection />
       <OurServicesAccordionSection />
+      <ComplexSolutionsForYourBusiness />
     </main>
   );
 }

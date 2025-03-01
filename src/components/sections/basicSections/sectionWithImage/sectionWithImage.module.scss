@@ -1,0 +1,48 @@
+.sectionWithImage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+  margin: 48px 0;
+
+  .sectionContent {
+    max-width: 45dvw;
+  }
+
+  .LEFT {
+    order: -1;
+  }
+
+  img {
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sectionWithImage {
+    flex-wrap: wrap;
+    gap: 24px;
+
+    .sectionContent {
+      max-width: 100%;
+    }
+
+    .LEFT {
+      order: -1;
+    }
+
+    .RIGHT {
+      order: -1;
+    }
+
+    img {
+      width: 400px;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
