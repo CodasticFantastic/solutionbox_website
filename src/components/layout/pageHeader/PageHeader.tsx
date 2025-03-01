@@ -1,22 +1,65 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import styles from "./pageHeader.module.scss";
 import Image from "next/image";
 import Button from "../../core/button/Button";
 import Link from "next/link";
 import PageHeaderNavLink from "./pageHeaderNavLink/PageHeaderNavLink";
 import PageHeaderMobileMenu from "./pageHeaderMobileMenu/PageHeaderMobileMenu";
+import { PageHeaderBackgroundColor } from "./pageHeader.types";
 
 const menuConfig = [
   { text: "Home", link: "/" },
   { text: "Produkty", link: "/produkty" },
   { text: "Usługi", link: "/uslugi" },
   { text: "Dlaczego my?", link: "/dlaczego-my" },
-  { text: "Wsparcie", link: "/wsparcie" },
   { text: "Kontakt", link: "/kontakt" },
 ];
 
 export default function PageHeader() {
+  const [sectionBackgroundColor, setSectionBackgroundColor] = useState<PageHeaderBackgroundColor>(PageHeaderBackgroundColor.DEFAULT);
+
+  // Detect section color below header based on "data-nav-bg-color" attribute
+  useEffect(() => {
+    function findSectionBelowFixedElement() {
+      const fixedElement = document.querySelector(".fixedElement");
+
+      if (!fixedElement) return null;
+      const fixedRect = fixedElement.getBoundingClientRect();
+
+      const sections = document.querySelectorAll("div[data-nav-bg-color]");
+
+      if (sections.length === 0) setSectionBackgroundColor(PageHeaderBackgroundColor.DEFAULT);
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (fixedRect.bottom >= rect.top && fixedRect.bottom <= rect.bottom) {
+          const setColor = section.getAttribute("data-nav-bg-color");
+          switch (setColor) {
+            case PageHeaderBackgroundColor.DEFAULT:
+              setSectionBackgroundColor(PageHeaderBackgroundColor.DEFAULT);
+              break;
+            case PageHeaderBackgroundColor.DARK:
+              setSectionBackgroundColor(PageHeaderBackgroundColor.DARK);
+              break;
+            default:
+              setSectionBackgroundColor(PageHeaderBackgroundColor.DEFAULT);
+          }
+        }
+      }
+    }
+
+    findSectionBelowFixedElement();
+    window.addEventListener("scroll", findSectionBelowFixedElement);
+
+    return () => {
+      window.removeEventListener("scroll", findSectionBelowFixedElement);
+    };
+  }, []);
+
   return (
-    <header className={`${styles.pageHeader} container`}>
+    <header className={`${styles.pageHeader} container fixedElement ${sectionBackgroundColor === "DARK" ? styles.dark : ""}`}>
       <Link href="/" className={styles.logo}>
         <Image src="/branding/solution-box-logo.svg" alt="Solution Box" width={50} height={78} />
       </Link>
@@ -29,7 +72,7 @@ export default function PageHeader() {
           ))}
         </nav>
         <Button variant="DARK" linkTo="tel:+48693200900" customStyles={{ padding: "12px 24px" }}>
-          Skontaktuj sie z nami
+          Skontaktuj się z nami
         </Button>
       </div>
       <div className={styles.mobileMenu}>

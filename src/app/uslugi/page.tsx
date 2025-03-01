@@ -1,3 +1,4 @@
+import { PageHeaderBackgroundColor } from "@/components/layout/pageHeader/pageHeader.types";
 import SectionDividerOrangeCircle from "@/components/sections/basicSections/sectionDividerOrangeCircle/SectionDividerOrangeCircle";
 import ComplexSolutionsForYourBusiness from "@/components/sections/presentableSections/complexSolutionsForYourBusiness/ComplexSolutionsForYourBusiness";
 import OurServicesAccordionSection from "@/components/sections/presentableSections/ourServicesAccordionSection/OurServicesAccordionSection";
@@ -13,11 +14,19 @@ export const metadata: Metadata = {
 export default function Uslugi() {
   return (
     <main>
-      <ServicesPageHeroSection />
-      <SectionDividerOrangeCircle variant="WHITE" />
-      <OurServicesOrbitalIconsSection />
-      <OurServicesAccordionSection />
-      <ComplexSolutionsForYourBusiness />
+      <div data-nav-bg-color={`${PageHeaderBackgroundColor.DEFAULT}`}>
+        <ServicesPageHeroSection />
+        <SectionDividerOrangeCircle variant="WHITE" />
+      </div>
+      <div data-nav-bg-color={`${PageHeaderBackgroundColor.DARK}`}>
+        <OurServicesOrbitalIconsSection />
+      </div>
+      <div data-nav-bg-color={`${PageHeaderBackgroundColor.DEFAULT}`}>
+        <OurServicesAccordionSection />
+      </div>
+      <div data-nav-bg-color={`${PageHeaderBackgroundColor.DARK}`}>
+        <ComplexSolutionsForYourBusiness />
+      </div>
     </main>
   );
 }

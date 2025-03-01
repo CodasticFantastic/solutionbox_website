@@ -1,12 +1,29 @@
 .pageHeader {
   position: fixed;
-  top: 16px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
+  height: calc(78px + 32px);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-gradient-1);
+    opacity: 0;
+    transition: opacity 0.4s linear;
+    z-index: -1;
+  }
+
+  &.dark::after {
+    opacity: 1;
+  }
 
   .desktopMenu {
     display: flex;
@@ -26,6 +43,8 @@
 
 @media (max-width: 860px) {
   .pageHeader {
+    height: calc(78px + 16px);
+
     .desktopMenu {
       display: none;
     }

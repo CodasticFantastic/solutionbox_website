@@ -2,28 +2,31 @@ import Image from "next/image";
 import styles from "./pageFooter.module.scss";
 import Link from "next/link";
 import Button from "@/components/core/button/Button";
+import { PageHeaderBackgroundColor } from "../pageHeader/pageHeader.types";
 
 export default function PageFooter() {
   return (
     <footer className={styles.pageFooter}>
       {/* Contact Us */}
-      <section className={styles.contactUsSection}>
-        <div className="container">
-          <p className={styles.accent}>Dla naszych klientów dostępne jest wsparcie 24/7</p>
-          <h2>Jak się z nami skontaktować?</h2>
-          <div className={styles.contactInfo}>
-            <Link href="tel: +48 693 200 900" className={styles.phone}>
-              +48 693 200 900
-            </Link>
-            <Link href="mailto:biuro@solutionbox.pl" className={styles.content}>
-              biuro@solutionbox.pl
-            </Link>
+      <div data-nav-bg-color={`${PageHeaderBackgroundColor.DEFAULT}`}>
+        <section className={styles.contactUsSection}>
+          <div className="container">
+            <p className={styles.accent}>Dla naszych klientów dostępne jest wsparcie 24/7</p>
+            <h2>Jak się z nami skontaktować?</h2>
+            <div className={styles.contactInfo}>
+              <Link href="tel: +48 693 200 900" className={styles.phone}>
+                +48 693 200 900
+              </Link>
+              <Link href="mailto:biuro@solutionbox.pl" className={styles.content}>
+                biuro@solutionbox.pl
+              </Link>
+            </div>
+            <Button variant="ORANGE" linkTo="/kontakt">
+              Formularz kontaktowy
+            </Button>
           </div>
-          <Button variant="ORANGE" linkTo="/kontakt">
-            Formularz kontaktowy
-          </Button>
-        </div>
-      </section>
+        </section>
+      </div>
       {/* Main Content */}
       <div className="container">
         <div className={styles.mainFooter}>
