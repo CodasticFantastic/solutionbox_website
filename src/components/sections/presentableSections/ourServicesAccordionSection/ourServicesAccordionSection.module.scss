@@ -15,6 +15,7 @@
 
         img {
           transition: 0.2s linear;
+          cursor: pointer;
         }
 
         &[data-state="open"] img {
