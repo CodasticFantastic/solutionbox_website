@@ -4,6 +4,12 @@ import HomePageHeroSection from "@/components/sections/presentableSections/homeP
 import DeliveringNewestTechSolutionsSection from "@/components/sections/presentableSections/deliveringNewestTechSolutionsSection/DeliveringNewestTechSolutionsSection";
 import HowToStarCollaborationWithUsSection from "@/components/sections/presentableSections/howToStarCollaborationWithUsSection/HowToStarCollaborationWithUsSection";
 import SectionDividerOrangeCircle from "@/components/sections/basicSections/sectionDividerOrangeCircle/SectionDividerOrangeCircle";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Home",
+};
 
 export default function Home() {
   return (

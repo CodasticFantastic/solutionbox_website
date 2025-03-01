@@ -10,8 +10,12 @@ const manropeFont = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Home - Solution Box",
-  description: "Solution Box",
+  title: {
+    default: "Solution Box",
+    template: "%s - Solution Box",
+  },
+  description:
+    "W Solution Box wierzymy, że najnowocześniejsze rozwiązania druku UV, druku 3D, cięcia CNC, frezowania i wsparcia serwisowego mogą być ogólnodostępne i zapewniać...",
 };
 
 export default function RootLayout({

@@ -1,6 +1,13 @@
 import SectionDividerOrangeCircle from "@/components/sections/basicSections/sectionDividerOrangeCircle/SectionDividerOrangeCircle";
+import OurServicesAccordionSection from "@/components/sections/presentableSections/ourServicesAccordionSection/OurServicesAccordionSection";
 import OurServicesOrbitalIconsSection from "@/components/sections/presentableSections/ourServicesOrbitalIconsSection/OurServicesOrbitalIconsSection";
 import ServicesPageHeroSection from "@/components/sections/presentableSections/servicesPageHeroSection/ServicesPageHeroSection";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Uslugi",
+  description: "Uslugi",
+};
 
 export default function Uslugi() {
   return (
@@ -8,6 +15,7 @@ export default function Uslugi() {
       <ServicesPageHeroSection />
       <SectionDividerOrangeCircle variant="WHITE" />
       <OurServicesOrbitalIconsSection />
+      <OurServicesAccordionSection />
     </main>
   );
 }

@@ -1,0 +1,37 @@
+.lionOnLeftSection {
+  padding: 64px 0;
+  background: var(--bg-gradient-1);
+  position: relative;
+  overflow: hidden;
+
+  .sectionContent {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bgImg {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    // height: 520px;
+    height: 95%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    transform: scaleX(-1) translateY(-50%);
+    z-index: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .lionOnLeftSection {
+    padding-bottom: 64px;
+    height: unset;
+    max-height: unset !important;
+  }
+}
