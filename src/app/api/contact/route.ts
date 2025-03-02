@@ -20,8 +20,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "ALL_FIELDS_ARE_REQUIRED" }, { status: 400 });
     }
 
-    console.log(process.env.SMTP_PASSWORD);
-
     // Message Config
     const mailOptions: Mail.Options = {
       from: `"SolutionBox - Formularz kontaktowy" <${process.env.SMTP_USER}>`,
@@ -40,7 +38,7 @@ export async function POST(req: Request) {
 
     await transporter.sendMail(mailOptions);
 
-    console.log(`[${new Date().toJSON()}]`, " Wiadomość wysłana: email", email);
+    console.info(`[${new Date().toJSON()}]`, " Wiadomość wysłana: email", email);
 
     return NextResponse.json({ message: "SUCCESS" }, { status: 200 });
   } catch (error) {
