@@ -15,7 +15,9 @@ export default function HomePageHeroSection() {
           zapewniać natychmiastowe, praktyczne i niezbędne wsparcie dla firm i przedsiębiorstw.
         </p>
         <div className={styles.btns}>
-          <Button variant="ORANGE">Sprawdź nasze usługi</Button>
+          <Button variant="ORANGE" linkTo="/uslugi">
+            Sprawdź nasze usługi
+          </Button>
           <Button variant="DARK" linkTo="/documents/katalog-SolutionBox-wersja-cyfrowa.pdf" openLinkInNewTab>
             Zobacz nasze Produkty
           </Button>
