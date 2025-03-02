@@ -13,7 +13,7 @@ export default function LionOnLeftSection({ children, className, variant = "DARK
       <div className={`container ${styles.sectionContent}`}>{children}</div>
       <Image
         className={`${styles.bgImg} ${styles[variant]}`}
-        src={variant === "DARK" ? "/imgs/fox-left-half-dark.svg" : "/imgs/fox-right-half-white.svg"}
+        src={variant === "DARK" ? "/imgs/fox-left-half-light.svg" : "/imgs/fox-right-half-white.svg"}
         width={345}
         height={904}
         alt="Solution Box"
