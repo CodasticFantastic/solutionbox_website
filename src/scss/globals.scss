@@ -44,6 +44,21 @@ body {
   margin: auto;
 }
 
+.pageNotFound {
+  padding-top: 124px;
+  min-height: calc(100dvh - 650px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    color: var(--font-dark);
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+}
 @media (max-width: 550px) {
   .container {
     padding: 0 12px;
