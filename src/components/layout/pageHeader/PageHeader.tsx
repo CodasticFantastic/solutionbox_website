@@ -59,24 +59,26 @@ export default function PageHeader() {
   }, []);
 
   return (
-    <header className={`${styles.pageHeader} container fixedElement ${sectionBackgroundColor === "DARK" ? styles.dark : ""}`}>
-      <Link href="/" className={styles.logo}>
-        <Image src="/branding/solution-box-logo.svg" alt="Solution Box" width={50} height={78} />
-      </Link>
-      <div className={styles.desktopMenu}>
-        <nav>
-          {menuConfig.map(({ text, link }) => (
-            <PageHeaderNavLink key={text} linkTo={link} display="DESKTOP">
-              {text}
-            </PageHeaderNavLink>
-          ))}
-        </nav>
-        <Button variant="DARK" linkTo="tel:+48693200900" customStyles={{ padding: "12px 24px" }}>
-          Skontaktuj się z nami
-        </Button>
-      </div>
-      <div className={styles.mobileMenu}>
-        <PageHeaderMobileMenu menuConfig={menuConfig} />
+    <header className={`${styles.pageHeader} fixedElement ${sectionBackgroundColor === "DARK" ? styles.dark : ""}`}>
+      <div className={`container ${styles.headerContainer}`}>
+        <Link href="/" className={styles.logo}>
+          <Image src="/branding/solution-box-logo.svg" alt="Solution Box" width={50} height={78} />
+        </Link>
+        <div className={styles.desktopMenu}>
+          <nav>
+            {menuConfig.map(({ text, link }) => (
+              <PageHeaderNavLink key={text} linkTo={link} display="DESKTOP">
+                {text}
+              </PageHeaderNavLink>
+            ))}
+          </nav>
+          <Button variant="DARK" linkTo="tel:+48693200900" customStyles={{ padding: "12px 24px" }}>
+            Skontaktuj się z nami
+          </Button>
+        </div>
+        <div className={styles.mobileMenu}>
+          <PageHeaderMobileMenu menuConfig={menuConfig} />
+        </div>
       </div>
     </header>
   );
