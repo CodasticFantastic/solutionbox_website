@@ -12,9 +12,9 @@ export default function AboutCompanySection() {
             <h2>Solution Box to firma z długą tradycją na rynku</h2>
             <p>
               Bogate doświadczenie biznesowe właścicieli Solution Box pozwala świadczyć szereg zintegrowanych usług w celu zaspokojenia potrzeb biznesowych
-              klientów. Skuteczne kampanie reklamowe i strategie sprzedażowe w cyfrowym świecie to jedna ze specjalizacji firmy. Eksperci od marketingu
-              cyfrowego Solution Box to ludzie z innowacyjnymi pomysłami na kreatywne reklamy oparte na obecnych trendach rynkowych. Jeśli chcesz poznać całą
-              ofertę i skorzystać z innych świadczonych przez nas usług koniecznie skontaktuj się z naszym doradcą.
+              klientów. Skuteczne kampanie reklamowe i strategie sprzedażowe to jedna ze specjalizacji firmy. Eksperci z zakresu druku, cięcia, reklamy,
+              poligrafii Solution Box to ludzie z innowacyjnymi pomysłami na kreatywne rozwiązania oparte na obecnych trendach rynkowych. Jeśli chcesz poznać
+              całą ofertę i skorzystać z innych świadczonych przez nas usług koniecznie skontaktuj się z naszym doradcą.
             </p>
           </SectionWithImage>
         </div>
@@ -38,10 +38,11 @@ export default function AboutCompanySection() {
         <div className="container">
           <SectionWithImage img="/imgs/o-firmie-3.webp" imgAlt="O firmie 3" imgPosition="LEFT" imgStyles={{ width: 380 }}>
             <p>
-              W Solution Box wierzymy, że nawet najnowocześniejsze rozwiązania konsultingowe mogą być ogólnodostępne i zapewniać natychmiastowe, praktyczne i
-              niezbędne wsparcie dla firm. Zdajemy sobie sprawę, że zdrowa tendencja wzrostowa w przedsiębiorstwach wymaga zarówno zintegrowanych małych kroków,
-              jak również trwałości i skalowalności w dłuższej perspektywie. W tych dziedzinach posiadamy doświadczenie i wiedzę, aby nie tylko gwarantować
-              konstruktywne wsparcie, ale także emanować naszym know-how i rozwiązaniami na skalę krajową.
+              W Solution Box wierzymy, że najnowocześniejsze rozwiązania druku UV, druku 3D, cięcia CNC, frezowania i wsparcia serwisowego mogą być
+              ogólnodostępne i zapewniać natychmiastowe, praktyczne i niezbędne wsparcie dla firm i przedsiębiorstw. Zdajemy sobie sprawę, że zdrowa tendencja
+              wzrostowa w przedsiębiorstwach wymaga zarówno zintegrowanych małych kroków, jak również trwałości i skalowalności w dłuższej perspektywie. W tych
+              dziedzinach posiadamy doświadczenie i wiedzę, aby nie tylko gwarantować konstruktywne wsparcie, ale także emanować naszym know-how i rozwiązaniami
+              na skalę krajową.
             </p>
             <strong className={styles.accent}>
               Naszym celem jest pomaganie firmom w równym funkcjonowaniu na rynku i tworzenie długoterminowej współpracy strategicznej opartej na zaufaniu i
