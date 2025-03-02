@@ -1,4 +1,4 @@
-.servicesPageHeroSection {
+.basicHeroSectionOnlyText {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -22,7 +22,7 @@
 }
 
 @media (max-width: 1023px) {
-  .servicesPageHeroSection {
+  .basicHeroSectionOnlyText {
     .left {
       margin-top: 136px;
       margin-bottom: 32px;
@@ -31,7 +31,7 @@
 }
 
 @media (max-width: 580px) {
-  .servicesPageHeroSection {
+  .basicHeroSectionOnlyText {
     .left {
       display: flex;
       flex-direction: column;

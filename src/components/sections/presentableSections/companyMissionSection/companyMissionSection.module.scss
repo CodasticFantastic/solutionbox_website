@@ -1,0 +1,125 @@
+.companyMissionSection {
+  padding: 64px 0;
+
+  .sectionContainer {
+    display: flex;
+
+    .left {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .right {
+      position: relative;
+      width: 40%;
+
+      .movableContainer {
+        top: 168px;
+        position: sticky;
+        text-align: right;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 18px;
+          left: 32px;
+          width: 50%;
+          height: 2px;
+          background-color: var(--border-color-primary);
+        }
+
+        h2 {
+          margin-bottom: 6px;
+        }
+      }
+    }
+  }
+}
+
+.missionTile {
+  background-color: var(--bg-light-blue);
+  padding: 42px 36px;
+  border-radius: 8px;
+  position: relative;
+
+  &:hover {
+    .number {
+      transform: scale(1.2);
+    }
+  }
+
+  .number {
+    position: absolute;
+    top: -24px;
+    left: 32px;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--font-tertiary);
+    transition: 0.1s linear;
+  }
+
+  p {
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 1023px) {
+  .companyMissionSection {
+    .sectionContainer {
+      .right {
+        .movableContainer {
+          &::before {
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 867px) {
+  .companyMissionSection {
+    .sectionContainer {
+      .right {
+        .movableContainer {
+          &::before {
+            width: 20%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  .companyMissionSection {
+    .sectionContainer {
+      flex-direction: column;
+      .left {
+        width: 100%;
+      }
+
+      .right {
+        width: 100%;
+        order: -1;
+
+        .movableContainer {
+          position: relative;
+          top: 0;
+          left: 0;
+          text-align: left;
+          margin-bottom: 48px;
+
+          &::before {
+            left: unset;
+            right: 0;
+            width: 30%;
+          }
+        }
+      }
+    }
+  }
+}

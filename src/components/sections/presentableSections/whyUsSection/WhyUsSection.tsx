@@ -1,9 +1,9 @@
 import styles from "./WhyUsSection.module.scss";
-import AnimatedOrbsIconsHomePage2, { AnimatedOrbitalIconWithText as WhyUsSection } from "./whyUsAnimatedOrbsIcons/WhyUSAnimatedOrbsIcons";
+import AnimatedOrbsIconsHomePage2, { AnimatedOrbitalIconWithText } from "./whyUsAnimatedOrbsIcons/WhyUSAnimatedOrbsIcons";
 import Image from "next/image";
 
-export default function HomePage3rdSection() {
-  const icons: WhyUsSection[] = [
+export default function WhyUsSection() {
+  const icons: AnimatedOrbitalIconWithText[] = [
     {
       id: 1,
       src: "/icons/specialist-icon-light.svg",

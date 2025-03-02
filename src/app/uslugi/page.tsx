@@ -3,7 +3,7 @@ import SectionDividerOrangeCircle from "@/components/sections/basicSections/sect
 import ComplexSolutionsForYourBusiness from "@/components/sections/presentableSections/complexSolutionsForYourBusiness/ComplexSolutionsForYourBusiness";
 import OurServicesAccordionSection from "@/components/sections/presentableSections/ourServicesAccordionSection/OurServicesAccordionSection";
 import OurServicesOrbitalIconsSection from "@/components/sections/presentableSections/ourServicesOrbitalIconsSection/OurServicesOrbitalIconsSection";
-import ServicesPageHeroSection from "@/components/sections/presentableSections/servicesPageHeroSection/ServicesPageHeroSection";
+import ServicesPageHeroSection from "@/components/sections/presentableSections/ServicesPageHeroSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
