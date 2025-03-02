@@ -6,13 +6,13 @@ import HowToStarCollaborationWithUsSection from "@/components/sections/presentab
 import SectionDividerOrangeCircle from "@/components/sections/basicSections/sectionDividerOrangeCircle/SectionDividerOrangeCircle";
 import { Metadata } from "next";
 import { PageHeaderBackgroundColor } from "@/components/layout/pageHeader/pageHeader.types";
+import OurPartnersSection from "@/components/sections/presentableSections/ourPartnersSection/OurPartnersSection";
 
 export const metadata: Metadata = {
   title: "Home",
 };
 
 export default function Home() {
-  console.log("PageHeaderBackgroundColor.DEFAULT", PageHeaderBackgroundColor.DEFAULT);
   return (
     <main>
       <div data-nav-bg-color={`${PageHeaderBackgroundColor.DEFAULT}`}>
@@ -24,6 +24,7 @@ export default function Home() {
         <WhyUsSection />
         <DeliveringNewestTechSolutionsSection />
         <HowToStarCollaborationWithUsSection />
+        <OurPartnersSection />
       </div>
     </main>
   );

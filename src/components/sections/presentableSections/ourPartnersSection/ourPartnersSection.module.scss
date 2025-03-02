@@ -1,0 +1,12 @@
+.ourPartnersSection {
+  padding: 32px 0;
+  background: var(--bg-light-blue);
+}
+
+@media (max-width: 660px) {
+  .ourPartnersSection {
+    h2 {
+      text-align: center;
+    }
+  }
+}
