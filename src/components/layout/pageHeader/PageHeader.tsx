@@ -14,6 +14,7 @@ const menuConfig: PageHeaderConfig[] = [
   { text: "Produkty", link: "/produkty" },
   { text: "Usługi", link: "/uslugi" },
   { text: "Dlaczego my?", link: "/dlaczego-my" },
+  { text: "O firmie", link: "/o-firmie" },
   { text: "Kontakt", link: "/kontakt" },
 ];
 

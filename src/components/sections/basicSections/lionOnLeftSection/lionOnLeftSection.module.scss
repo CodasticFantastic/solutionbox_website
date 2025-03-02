@@ -4,6 +4,10 @@
   position: relative;
   overflow: hidden;
 
+  &.LIGHT_BLUE {
+    background: var(--bg-light-blue);
+  }
+
   .sectionContent {
     position: relative;
     z-index: 1;
@@ -25,6 +29,11 @@
     object-fit: contain;
     transform: scaleX(-1) translateY(-50%);
     z-index: 0;
+
+    &.LIGHT_BLUE {
+      height: 100%;
+      transform: translateY(-50%);
+    }
   }
 }
 
@@ -33,5 +42,14 @@
     padding-bottom: 64px;
     height: unset;
     max-height: unset !important;
+
+    .bgImg {
+      &.LIGHT_BLUE {
+        top: unset;
+        bottom: 0%;
+        height: auto;
+        transform: unset;
+      }
+    }
   }
 }
