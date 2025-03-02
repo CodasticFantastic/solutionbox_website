@@ -8,7 +8,6 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Uslugi",
-  description: "Uslugi",
 };
 
 export default function Uslugi() {

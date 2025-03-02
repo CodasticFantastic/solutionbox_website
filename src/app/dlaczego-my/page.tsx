@@ -9,7 +9,6 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Dlaczego my",
-  description: "Uslugi",
 };
 
 export default function DlaczegoMy() {

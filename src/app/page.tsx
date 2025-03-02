@@ -9,7 +9,6 @@ import { PageHeaderBackgroundColor } from "@/components/layout/pageHeader/pageHe
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Home",
 };
 
 export default function Home() {
