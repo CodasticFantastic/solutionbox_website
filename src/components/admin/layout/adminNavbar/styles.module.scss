@@ -21,11 +21,12 @@
     align-items: center;
     justify-content: center;
     color: var(--bg-light);
+    cursor: pointer;
+
     .navbarTileIcon {
     }
 
     .navbarTileTitle {
-      cursor: pointer;
       position: absolute;
       top: 50%;
       left: 32px;

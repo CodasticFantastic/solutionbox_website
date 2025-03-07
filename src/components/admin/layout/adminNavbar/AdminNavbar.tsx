@@ -2,21 +2,11 @@
 
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import {
-  MdCategory,
-  MdDashboard,
-  MdDevicesOther,
-  MdLogout,
-} from "react-icons/md";
+import { MdCategory, MdDevicesOther, MdLogout } from "react-icons/md";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 
 const adminNavbarConfig = [
-  {
-    title: "Dashboard",
-    href: "/admin/dashboard",
-    icon: MdDashboard,
-  },
   {
     title: "Kategorie",
     href: "/admin/kategorie",
@@ -33,12 +23,14 @@ export default function AdminNavbar() {
   return (
     <aside className={styles.adminNavbar}>
       <div className={styles.navbarTop}>
-        <Image
-          src="branding/solution-box-logo.svg"
-          alt="Solution Box"
-          width={32}
-          height={40}
-        />
+        <Link href="/">
+          <Image
+            src="branding/solution-box-logo.svg"
+            alt="Solution Box"
+            width={32}
+            height={40}
+          />
+        </Link>
       </div>
       <div className={styles.navbarCenter}>
         {adminNavbarConfig.map(({ title, href, icon: Icon }) => (
