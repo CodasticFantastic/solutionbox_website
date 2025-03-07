@@ -1,0 +1,50 @@
+.adminNavbar {
+  background: var(--bg-gradient-1);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .navbarTop {
+  }
+  .navbarCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .navbarBottom {
+  }
+
+  .navbarTile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-light);
+    .navbarTileIcon {
+    }
+
+    .navbarTileTitle {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 32px;
+      transform: translateY(-50%);
+      color: var(--font-light);
+      background: var(--bg-gradient-1);
+      padding: 2px 6px;
+      border-radius: 3px;
+      transition: 0.3s ease-in-out;
+      opacity: 0;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    &:hover {
+      .navbarTileTitle {
+        left: 58px;
+        opacity: 1;
+      }
+    }
+  }
+}

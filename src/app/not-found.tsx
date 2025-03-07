@@ -1,4 +1,4 @@
-import { PageHeaderBackgroundColor } from "@/components/layout/pageHeader/pageHeader.types";
+import { PageHeaderBackgroundColor } from "@/components/website//layout/pageHeader/pageHeader.types";
 import { Metadata } from "next";
 import Link from "next/link";
 

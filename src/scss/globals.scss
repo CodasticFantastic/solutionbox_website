@@ -18,9 +18,16 @@
   --bg-light: #ffffff;
   --bg-light-blue: #f4f8fb;
   --bg-gradient-1: linear-gradient(132.02deg, #09162b 26.3%, #461837 144.63%);
-  --bg-gradient-1-hover: linear-gradient(320deg, #09162b 26.3%, #461837 144.63%);
+  --bg-gradient-1-hover: linear-gradient(
+    320deg,
+    #09162b 26.3%,
+    #461837 144.63%
+  );
   --bg-gradient-2: linear-gradient(91.07deg, #f29104 2.5%, #e95c0c 121.01%);
   --bg-gradient-2-hover: linear-gradient(180deg, #f29104 2.5%, #e95c0c 121.01%);
+
+  // Header and Footer size
+  --header-footer-height: 660px;
 }
 
 * {
@@ -45,8 +52,7 @@ body {
 }
 
 .pageNotFound {
-  padding-top: 124px;
-  min-height: calc(100dvh - 650px);
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;

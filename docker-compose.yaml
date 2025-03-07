@@ -1,13 +1,37 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3300:3000"
+  mysql:
+    image: mysql:latest
+    container_name: mysql_container
+    restart: always
     environment:
-      - SMTP_HOST=${SMTP_HOST}
-      - SMTP_PORT=465
-      - SMTP_USER=${SMTP_USER}
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
-      - CONTACT_EMAIL=${CONTACT_EMAIL}
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3300:3000"
+  #   environment:
+  #     - SMTP_HOST=${SMTP_HOST}
+  #     - SMTP_PORT=465
+  #     - SMTP_USER=${SMTP_USER}
+  #     - SMTP_PASSWORD=${SMTP_PASSWORD}
+  #     - CONTACT_EMAIL=${CONTACT_EMAIL}
+  #     - DATABASE_HOST=mysql
+  #     - DATABASE_PORT=3306
+  #     - DATABASE_USER=user
+  #     - DATABASE_PASSWORD=password
+  #     - DATABASE_NAME=my_database
+  #   depends_on:
+  #     - mysql
+
+volumes:
+  mysql_data:
