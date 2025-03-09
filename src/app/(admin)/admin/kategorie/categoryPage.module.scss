@@ -1,0 +1,40 @@
+.categoryPage {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .categoriesList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .categoryTile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--border-color-tertiary);
+      border-radius: 8px;
+      padding: 12px;
+
+      .categoryInfo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        img {
+          border: 1px solid var(--border-color-tertiary);
+          border-radius: 4px;
+        }
+      }
+
+      .categoryTileBtns {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+}

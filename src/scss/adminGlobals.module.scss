@@ -3,6 +3,8 @@
   display: flex;
 
   .mainContent {
+    position: relative;
+    z-index: 0;
     padding: 0px 16px;
     width: 100%;
     overflow-y: auto;

@@ -1,0 +1,53 @@
+.editorContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem; // mb-2
+
+  .label {
+    font-size: 14px;
+  }
+
+  .editorAction {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem; // gap-1
+    font-size: 14px;
+    user-select: none;
+    cursor: pointer;
+
+    &.textPrimary {
+      color: var(--font-primary);
+    }
+
+    &.textDanger {
+      color: red;
+    }
+  }
+}
+
+.editorWrapper {
+  position: relative;
+
+  .quillContainer {
+    position: relative;
+  }
+
+  .lockedOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+
+    svg {
+      color: rgba(0, 0, 0, 0.4);
+      font-size: 42px;
+    }
+  }
+}

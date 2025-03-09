@@ -25,7 +25,7 @@ export default function AdminNavbar() {
       <div className={styles.navbarTop}>
         <Link href="/">
           <Image
-            src="branding/solution-box-logo.svg"
+            src="/branding/solution-box-logo.svg"
             alt="Solution Box"
             width={32}
             height={40}
