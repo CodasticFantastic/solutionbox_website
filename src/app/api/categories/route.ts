@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient, UserRole } from "@prisma/client";
 import slugify from "slugify";
-import fs from "fs";
-import path from "path";
 import { auth } from "@/app/auth/auth";
 import { deleteFile, uploadFile } from "../libs/uploads";
 
@@ -170,7 +168,7 @@ export async function PUT(req: NextRequest) {
   }
 }
 
-// 📌 [DELETE] Usunięcie kategorii
+// [PRIVATE] [DELETE] Usunięcie kategorii
 export async function DELETE(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
@@ -192,9 +190,7 @@ export async function DELETE(req: NextRequest) {
 
   if (category.image) {
     try {
-      await fs.promises.unlink(
-        path.join(process.cwd(), "/uploads", category.image)
-      );
+      await deleteFile(category.image);
     } catch (err) {
       console.error("Błąd usuwania pliku:", err);
     }
