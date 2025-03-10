@@ -13,10 +13,8 @@ const IMAGE_EXTENSIONS = [".webp"];
 const DOCUMENT_EXTENSIONS = [".pdf"];
 
 // Serve requested file from filesystem
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { file: string } }
-) {
+export async function GET(req: NextRequest, props: { params: Promise<{ file: string }> }) {
+  const params = await props.params;
   const file = params.file;
 
   // Secure access
