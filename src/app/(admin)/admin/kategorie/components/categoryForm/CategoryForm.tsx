@@ -42,7 +42,7 @@ export default function CategoryForm({
     setFormState(defaultValues);
 
     if (defaultValues.image) {
-      setImagePreviewUrl(`/images/${defaultValues.image.name}`);
+      setImagePreviewUrl(`/api/files/${defaultValues.image.name}`);
     }
   }, [defaultValues]);
 

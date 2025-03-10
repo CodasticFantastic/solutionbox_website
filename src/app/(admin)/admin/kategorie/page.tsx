@@ -72,7 +72,7 @@ export default function Kategorie() {
                 <div className={styles.categoryTile}>
                   <div className={styles.categoryInfo}>
                     <Image
-                      src={`/api/images/${category.image}`}
+                      src={`/api/files/${category.image}`}
                       alt={`Zdjęcie dla kategorii ${category.name}`}
                       width={52}
                       height={52}

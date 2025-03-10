@@ -31,7 +31,7 @@ export default function EdytujKategorie() {
 
       if (data.image) {
         try {
-          const responseImage = await fetch(`/api/images/${data.image}`);
+          const responseImage = await fetch(`/api/files/${data.image}`);
           const blob = await responseImage.blob();
 
           image = new File([blob], data.image, { type: blob.type });

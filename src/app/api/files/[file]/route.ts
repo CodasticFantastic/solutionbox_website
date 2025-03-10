@@ -17,7 +17,7 @@ export async function GET(
   req: NextRequest,
   { params }: { params: { file: string } }
 ) {
-  const { file } = params;
+  const file = params.file;
 
   // Secure access
   if (!file || file.includes("..") || file.includes("/")) {
