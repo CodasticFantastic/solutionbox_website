@@ -11,7 +11,7 @@ import { PageHeaderBackgroundColor, PageHeaderConfig } from "./pageHeader.types"
 
 const menuConfig: PageHeaderConfig[] = [
   { text: "Home", link: "/" },
-  // { text: "Produkty", link: "/produkty" },
+  { text: "Produkty", link: "/produkty" },
   { text: "Usługi", link: "/uslugi" },
   { text: "Dlaczego my?", link: "/dlaczego-my" },
   { text: "O firmie", link: "/o-firmie" },
