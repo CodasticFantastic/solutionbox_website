@@ -65,7 +65,7 @@ export default function Produkty() {
         title="Produkty"
         actions={
           <Button variant="ADD" linkTo="/admin/produkty/dodaj">
-            Dodaj kategorię
+            Dodaj produkt
           </Button>
         }
       />
