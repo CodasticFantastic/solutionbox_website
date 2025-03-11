@@ -45,8 +45,23 @@ export const uploadFile = async (file: File): Promise<string> => {
   const filePath = path.join(uploadDir, filename);
 
   if (isImage) {
-    // Convert image to Webp format and save to disk
-    const processedImage = await sharp(buffer).webp({ quality: 80 }).toBuffer();
+    let processedImage: Buffer;
+
+    if (extension === ".webp") {
+      // If file is already WebP, read it directly
+      processedImage = buffer;
+    } else {
+      let image = sharp(buffer);
+
+      if (extension === ".png") {
+        // Trim png file if got a blank spaces
+        image = image.trim();
+      }
+
+      // Convert to WebP
+      processedImage = await image.webp({ quality: 80 }).toBuffer();
+    }
+
     await fs.promises.writeFile(filePath, processedImage);
   } else {
     // Save document to disk
