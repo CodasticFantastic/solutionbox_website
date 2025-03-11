@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./productForm.module.scss";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { RichTextEditor } from "@/components/global/richTextEditor/RichTextEditor";
 import Image from "next/image";
 import Button from "@/components/admin/core/button/Button";
 import { MdDelete } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
-interface ProductFormState {
+export interface ProductFormState {
   seoTitle: string;
   seoDescription: string;
   producer: string;
@@ -19,7 +20,18 @@ interface ProductFormState {
   productFeatures: { title: string; description: string }[];
 }
 
-export default function ProductForm() {
+interface ProductFormProps {
+  variant: "ADD" | "EDIT";
+  defaultValues?: ProductFormState;
+  productId?: number;
+}
+
+export default function ProductForm({
+  variant,
+  defaultValues,
+  productId,
+}: ProductFormProps) {
+  const router = useRouter();
   const [formState, setFormState] = useState<ProductFormState>({
     seoTitle: "",
     seoDescription: "",
@@ -47,10 +59,11 @@ export default function ProductForm() {
       },
     ],
   });
+  const [isDataSending, setIsDataSending] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formState);
+    setIsDataSending(true);
 
     const formData = new FormData();
 
@@ -64,6 +77,9 @@ export default function ProductForm() {
       "productFeatures",
       JSON.stringify(formState.productFeatures)
     );
+    if (variant === "EDIT" && productId) {
+      formData.append("productId", String(productId));
+    }
 
     // Append images do formdata
     formState.images.forEach((image) => {
@@ -85,7 +101,7 @@ export default function ProductForm() {
 
     try {
       const response = await fetch("/api/products", {
-        method: "POST",
+        method: variant === "ADD" ? "POST" : "PUT",
         body: formData,
       });
 
@@ -93,15 +109,54 @@ export default function ProductForm() {
         throw new Error("Błąd podczas dodawania produktu");
       }
 
-      const result = await response.json();
-      console.log("Produkt dodany:", result);
-
-      alert("Produkt został dodany!");
+      if (variant === "EDIT") {
+        alert("Produkt zaktualizowany poprawnie!");
+      } else {
+        router.push("/admin/produkty");
+      }
     } catch (error) {
       console.error("Błąd:", error);
       alert("Wystąpił problem podczas dodawania produktu.");
+    } finally {
+      setIsDataSending(false);
     }
   };
+
+  useEffect(() => {
+    if (!defaultValues) return;
+
+    const fetchImages = async () => {
+      const processedImages = await Promise.all(
+        defaultValues.images.map(async (image) => {
+          if (typeof image.img === "string") {
+            // Get image blob from API
+            try {
+              const response = await fetch(`/api/files/${image.img}`);
+              if (!response.ok) throw new Error("Błąd pobierania obrazu");
+
+              const blob = await response.blob();
+              return {
+                img: new File([blob], image.img, { type: blob.type }),
+                isDefault: image.isDefault,
+              };
+            } catch (error) {
+              console.error(`Błąd pobierania obrazu ${image.img}:`, error);
+              return null; // Jeśli obraz nie został pobrany, zwracamy null
+            }
+          }
+          return image; // Jeśli to już jest `File`, pozostawiamy bez zmian
+        })
+      );
+
+      // Filtrujemy null (w przypadku błędów pobierania)
+      setFormState({
+        ...defaultValues,
+        images: processedImages.filter((img) => img !== null),
+      });
+    };
+
+    fetchImages();
+  }, [defaultValues]);
 
   return (
     <form className={styles.productForm} onSubmit={handleSubmit}>
@@ -196,7 +251,6 @@ export default function ProductForm() {
               onChange={(e) =>
                 setFormState((prev) => ({ ...prev, price: e.target.value }))
               }
-              required
             />
           </label>
         </div>
@@ -481,16 +535,19 @@ export default function ProductForm() {
             label="Opis Produktu"
             placeholder="Opis produktu..."
             initialValue={formState.description}
-            //   initialDisabled={defaultValues === undefined ? false : true}
+              initialDisabled={defaultValues === undefined ? false : true}
             onChange={(e) =>
               setFormState((prev) => ({ ...prev, description: e }))
             }
           />
         </div>
       </div>
-      <Button type="submit" variant="ADD">
-        Dodaj produkt
-        {/* {variant === "ADD" ? "Dodaj produkt" : "Zaktualizuj produkt"} */}
+      <Button type="submit" variant="ADD" disabled={isDataSending}>
+        {isDataSending
+          ? "Zapisywanie..."
+          : variant === "ADD"
+          ? "Dodaj produkt"
+          : "Zaktualizuj produkt"}
       </Button>
     </form>
   );

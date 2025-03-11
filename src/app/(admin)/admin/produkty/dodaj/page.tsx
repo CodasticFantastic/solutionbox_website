@@ -5,7 +5,7 @@ export default function DodajProdukt() {
   return (
     <div>
       <PageHeader title="Dodaj Produkt" />
-      <ProductForm />
+      <ProductForm variant="ADD" />
     </div>
   );
 }

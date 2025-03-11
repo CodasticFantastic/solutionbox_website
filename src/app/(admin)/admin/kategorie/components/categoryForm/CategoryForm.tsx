@@ -35,6 +35,7 @@ export default function CategoryForm({
     image: null,
   });
   const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
+  const [isDataSending, setIsDataSending] = useState(false);
 
   useEffect(() => {
     if (!defaultValues) return;
@@ -63,6 +64,7 @@ export default function CategoryForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsDataSending(true);
 
     const formData = new FormData();
     formData.append("seoTitle", formState.seoTitle);
@@ -76,20 +78,27 @@ export default function CategoryForm({
       formData.append("id", String(categoryId));
     }
 
-    const res = await fetch("/api/categories", {
-      method: variant === "ADD" ? "POST" : "PUT",
-      body: formData,
-    });
+    try {
+      const res = await fetch("/api/categories", {
+        method: variant === "ADD" ? "POST" : "PUT",
+        body: formData,
+      });
 
-    if (res.ok) {
-      if (variant === "EDIT") {
-        alert("Kategoria zaktualizowana poprawnie!");
+      if (res.ok) {
+        if (variant === "EDIT") {
+          alert("Kategoria zaktualizowana poprawnie!");
+        } else {
+          router.push("/admin/kategorie");
+        }
       } else {
-        router.push("/admin/kategorie");
+        const { error } = await res.json();
+        alert(`Błąd: ${error}`);
       }
-    } else {
-      const { error } = await res.json();
-      alert(`Błąd: ${error}`);
+    } catch (error) {
+      console.error("Błąd podczas wysyłania danych:", error);
+      alert("Błąd podczas wysyłania danych!");
+    } finally {
+      setIsDataSending(false);
     }
   };
 
@@ -199,8 +208,12 @@ export default function CategoryForm({
         />
       </div>
 
-      <Button type="submit" variant="ADD">
-        {variant === "ADD" ? "Utwórz kategorię" : "Zaktualizuj kategorię"}
+      <Button type="submit" variant="ADD" disabled={isDataSending}>
+        {isDataSending
+          ? "Zapisywanie..."
+          : variant === "ADD"
+          ? "Dodaj kategorię"
+          : "Zaktualizuj kategorię"}
       </Button>
     </form>
   );

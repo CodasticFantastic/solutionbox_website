@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Prisma, UserRole } from "@prisma/client";
 import { auth } from "@/app/auth/auth";
-import { uploadFile } from "../libs/uploads";
+import { deleteFile, uploadFile } from "../libs/uploads";
 import { prismaClient } from "@/prisma/prisma";
 
 // [PUBLIC] [GET] - Get product by ID or all products
@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
     const productFeatures = formData.get("productFeatures") as string;
     const defaultImageIndex = formData.get("defaultImageIndex") as string;
 
-    if (!seoTitle || !seoDescription || !producer || !name || !price) {
+    if (!seoTitle || !seoDescription || !producer || !name) {
       return NextResponse.json(
         { error: "Brak wymaganych pól" },
         { status: 400 }
@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
         producer,
         name,
         description,
-        price: Prisma.Decimal(price),
+        price: price ? Prisma.Decimal(price) : 0,
         images: JSON.stringify(uploadedImages),
         productFeatures: productFeatures ? productFeatures : "[]",
       },
@@ -114,6 +114,111 @@ export async function POST(req: NextRequest) {
     console.error("ERROR", error);
     return NextResponse.json(
       { error: "Błąd tworzenia produktu" },
+      { status: 400 }
+    );
+  }
+}
+
+// [PRIVATE] [PUT] - Update existing product
+export async function PUT(req: NextRequest) {
+  const session = await auth();
+
+  if (!session || session.user.role !== UserRole.ADMIN) {
+    return NextResponse.json({ error: "Brak uprawnień" }, { status: 403 });
+  }
+
+  try {
+    const formData = await req.formData();
+    const productId = formData.get("productId") as string;
+
+    if (!productId) {
+      return NextResponse.json({ error: "Brak ID produktu" }, { status: 400 });
+    }
+
+    // Get edited product
+    const existingProduct = await prismaClient.product.findUnique({
+      where: { id: Number(productId) },
+    });
+
+    if (!existingProduct) {
+      return NextResponse.json(
+        { error: "Produkt nie istnieje" },
+        { status: 404 }
+      );
+    }
+
+    // Get form values
+    const seoTitle = formData.get("seoTitle") as string;
+    const seoDescription = formData.get("seoDescription") as string;
+    const producer = formData.get("producer") as string;
+    const name = formData.get("name") as string;
+    const description = formData.get("description") as string;
+    const price = formData.get("price") as string;
+    const images = formData.getAll("images") as File[];
+    const productFeatures = formData.get("productFeatures") as string;
+    const defaultImageIndex = formData.get("defaultImageIndex") as string;
+
+    if (!seoTitle || !seoDescription || !producer || !name) {
+      return NextResponse.json(
+        { error: "Brak wymaganych pól" },
+        { status: 400 }
+      );
+    }
+
+    // Delete old images
+    if (existingProduct.images) {
+      const oldImages: {
+        img: string;
+        isDefault: boolean;
+      }[] = JSON.parse(existingProduct.images as string);
+
+      const deletePromises = oldImages.map(async (image) => {
+        try {
+          await deleteFile(image.img);
+        } catch (error) {
+          console.error(`Błąd usuwania pliku ${image.img}:`, error);
+        }
+      });
+
+      await Promise.all(deletePromises);
+    }
+
+    // Save new images
+    const uploadedImages: { img: string; isDefault: boolean }[] = [];
+
+    if (images.length > 0) {
+      const uploadPromises = images.map(async (image, index) => {
+        const imageUrl = await uploadFile(image);
+        return {
+          img: imageUrl,
+          isDefault: index === Number(defaultImageIndex),
+        };
+      });
+
+      const results = await Promise.all(uploadPromises);
+      uploadedImages.push(...results);
+    }
+
+    // Update product in database
+    const updatedProduct = await prismaClient.product.update({
+      where: { id: Number(productId) },
+      data: {
+        seoTitle,
+        seoDescription,
+        producer,
+        name,
+        description,
+        price: Prisma.Decimal(price),
+        images: JSON.stringify(uploadedImages),
+        productFeatures: productFeatures ? productFeatures : "[]",
+      },
+    });
+
+    return NextResponse.json(updatedProduct, { status: 200 });
+  } catch (error) {
+    console.error("ERROR", error);
+    return NextResponse.json(
+      { error: "Błąd aktualizacji produktu" },
       { status: 400 }
     );
   }
