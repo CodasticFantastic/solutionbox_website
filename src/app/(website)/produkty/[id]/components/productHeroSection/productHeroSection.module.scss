@@ -1,0 +1,136 @@
+.productHeroSection {
+  .sectionContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+
+    .left {
+      max-width: 50%;
+
+      .producer {
+        display: block;
+        color: var(--font-primary);
+        margin-bottom: -9px;
+        font-size: 16px;
+      }
+
+      h1 {
+        margin-bottom: 24px;
+      }
+
+      .prodFeatures {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        p {
+          color: var(--font-light);
+        }
+
+        .feature {
+          display: flex;
+          gap: 4px;
+
+          .icon {
+            margin-top: 2px;
+            min-width: 20px;
+          }
+
+          .featureTitle {
+            color: var(--font-primary);
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 2px;
+          }
+        }
+      }
+
+      .btns {
+        margin-top: 24px;
+        display: flex;
+        gap: 12px;
+
+        button {
+          padding-left: 36px;
+          padding-right: 36px;
+        }
+      }
+    }
+
+    .right {
+      max-width: 40%;
+
+      .imgHolder {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          filter: drop-shadow(1px 1px 5px rgba(255, 255, 255, 0.6));
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .productHeroSection {
+    padding-top: 136px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .productHeroSection {
+    padding-top: 136px;
+    .sectionContainer {
+      flex-direction: column;
+      gap: 24px;
+
+      .left {
+        max-width: 100%;
+
+        .producer {
+          text-align: center;
+        }
+
+        h1 {
+          text-align: center;
+        }
+
+        .prodFeatures {
+          align-items: center;
+
+          .icon {
+            display: none;
+          }
+
+          p {
+            text-align: center;
+          }
+        }
+
+        .btns {
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-top: 36px;
+        }
+      }
+
+      .right {
+        max-width: 100%;
+
+        .imgHolder {
+          max-height: 360px;
+        }
+      }
+    }
+  }
+}

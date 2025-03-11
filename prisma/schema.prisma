@@ -29,26 +29,39 @@ model User {
 }
 
 model ProductCategory {
-  id             Int       @id @default(autoincrement())
-  seoTitle       String    @default("")
-  seoDescription String    @default("")
+  id             Int                    @id @default(autoincrement())
+  seoTitle       String                 @default("")
+  seoDescription String                 @default("")
   name           String
-  slug           String    @unique
+  slug           String                 @unique
   description    String
   image          String
-  products       Product[]
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  products       CategoriesOnProducts[]
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime               @updatedAt
 }
 
 model Product {
-  id          Int             @id @default(autoincrement())
-  name        String
-  description String?
-  price       Decimal
-  images      Json            @default("[]")
-  category    ProductCategory @relation(fields: [categoryId], references: [id])
-  categoryId  Int
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  id              Int                    @id @default(autoincrement())
+  seoTitle        String                 @default("")
+  seoDescription  String                 @default("")
+  producer        String
+  name            String
+  description     String?
+  price           Decimal
+  images          Json                   @default("[]")
+  categories      CategoriesOnProducts[]
+  productFeatures Json                   @default("[]")
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+}
+
+model CategoriesOnProducts {
+  productId  Int
+  categoryId Int
+
+  product  Product         @relation(fields: [productId], references: [id])
+  category ProductCategory @relation(fields: [categoryId], references: [id])
+
+  @@id([productId, categoryId]) // ✅ Złożony klucz główny (unikalność)
 }

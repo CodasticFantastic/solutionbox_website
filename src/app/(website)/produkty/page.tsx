@@ -4,6 +4,11 @@ import ProductsBrands from "@/components/website/sections/presentableSections/pr
 import ProductsCategories from "@/components/website/sections/presentableSections/productsCategories/ProductsCategories";
 import ProductsPageHeroSection from "@/components/website/sections/presentableSections/ProductsPageHeroSection";
 import WhyUsSection from "@/components/website/sections/presentableSections/whyUsSection/WhyUsSection";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Produkty",
+};
 
 export default function ProduktyPage() {
   return (
