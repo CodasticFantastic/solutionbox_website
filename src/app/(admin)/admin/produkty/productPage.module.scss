@@ -1,0 +1,42 @@
+.productsListPage {
+  .productsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .productTile {
+      border: 1px solid var(--border-color-tertiary);
+      border-radius: 8px;
+      overflow: hidden;
+      width: 280px;
+
+      img {
+        padding: 12px;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .productInfo {
+        padding: 6px 12px;
+        background: var(--bg-gradient-1);
+
+        .productName {
+          color: var(--font-light);
+          font-weight: 600;
+          font-size: 15px;
+          margin-bottom: 6px;
+        }
+
+        .productTileBtns {
+          display: flex;
+          gap: 8px;
+
+          button {
+            flex-grow: 1;
+          }
+        }
+      }
+    }
+  }
+}

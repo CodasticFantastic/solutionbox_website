@@ -157,6 +157,7 @@ export default function CategoryForm({
               required
             />
           </label>
+          {/* File Input */}
           <label htmlFor="file" className={styles.inputField}>
             <span className={styles.inputLabel}>Obraz Kategorii</span>
             <input
