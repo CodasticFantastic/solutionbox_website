@@ -5,12 +5,35 @@ import { auth } from "@/app/auth/auth";
 import { deleteFile, uploadFile } from "../libs/uploads";
 import { prismaClient } from "@/prisma/prisma";
 
-// [PUBLIC] [GET] - Download all categories
+// [PUBLIC] [GET] - Get categories based on ID/SLUG or return all categories
 export async function GET(req: NextRequest) {
   try {
     // Check if ID is present
     const { searchParams } = new URL(req.url);
     const categoryId = searchParams.get("id");
+    const slug = searchParams.get("slug");
+
+    if (slug) {
+      const category = await prismaClient.productCategory.findUnique({
+        where: { slug },
+        include: {
+          products: {
+            include: {
+              product: true,
+            },
+          },
+        },
+      });
+
+      if (!category) {
+        return NextResponse.json(
+          { error: "Kategoria nie znaleziona" },
+          { status: 404 }
+        );
+      }
+
+      return NextResponse.json(category);
+    }
 
     if (categoryId) {
       // Return single category by ID

@@ -9,47 +9,47 @@ import Button from "@/components/website/core/button/Button";
 const categoriesConfig = [
   {
     title: "Plotery",
-    slug: "/produkty/plotery",
+    slug: "/produkty/kategoria/plotery",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Urządzenia frezujące",
-    slug: "/produkty/urzadzenia-frezujace",
+    slug: "/produkty/kategoria/urzadzenia-frezujace",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Drukarki strukturalne UV",
-    slug: "/produkty/drukarki-strukturalne-uv",
+    slug: "/produkty/kategoria/drukarki-strukturalne-uv",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Drukarki kanałowe 3D",
-    slug: "/produkty/drukarki-kanalowe-3d",
+    slug: "/produkty/kategoria/drukarki-kanalowe-3d",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Skanery strukturalne",
-    slug: "/produkty/skanery-strukturalne",
+    slug: "/produkty/kategoria/skanery-strukturalne",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Lasery",
-    slug: "/produkty/lasery",
+    slug: "/produkty/kategoria/lasery",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Generatory azotu",
-    slug: "/produkty/generatory-azotu",
+    slug: "/produkty/kategoria/generatory-azotu",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Gadżety",
-    slug: "/produkty/gadżety",
+    slug: "/produkty/kategoria/gadżety",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Consumable",
-    slug: "/produkty/consumable",
+    slug: "/produkty/kategoria/consumable",
     img: "/imgs/category-plotery.png",
   },
 ];
