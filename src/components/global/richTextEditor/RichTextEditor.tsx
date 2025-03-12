@@ -6,6 +6,11 @@ import styles from "./richTextEditor.module.scss";
 import { IoMdLock, IoMdUnlock } from "react-icons/io";
 import { MdOutlineTextFields } from "react-icons/md";
 
+// quill-better-table plugin
+import "quill-better-table/dist/quill-better-table.css";
+// @ts-expect-error: No Types for NPM module
+import QuillBetterTable from "quill-better-table";
+
 // Quill Toolbar Config
 const toolbarConfig = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -30,14 +35,15 @@ interface RichTextEditorProps {
   maxLength?: number;
 }
 
-export const RichTextEditor: React.FC<RichTextEditorProps> = ({
+// export const RichTextEditor: React.FC<RichTextEditorProps> = ({
+export default function RichTextEditor({
   onChange,
   placeholder,
   label,
   initialValue,
   initialDisabled,
   maxLength,
-}) => {
+}: RichTextEditorProps) {
   const quillContainerRef = useRef<HTMLDivElement | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const quillInstanceRef = useRef<any>(null);
@@ -60,6 +66,14 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
       import("quill").then((QuillModule) => {
         QuillInstance = QuillModule.default;
 
+        // Dodanie modułu quill-better-table do Quilla
+        QuillInstance.register(
+          {
+            "modules/better-table": QuillBetterTable,
+          },
+          true
+        );
+
         // Prevent multiple Quill instances
         if (quillInstanceRef.current) {
           setIsQuillMounted(true);
@@ -73,6 +87,33 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
             debug: "error",
             modules: {
               toolbar: toolbarConfig,
+              "better-table": {
+                operationMenu: {
+                  items: {
+                    insertColumnRight: {
+                      text: "Insert column right",
+                    },
+                    insertColumnLeft: {
+                      text: "Insert column left",
+                    },
+                    insertRowUp: {
+                      text: "Insert row up",
+                    },
+                    insertRowDown: {
+                      text: "Insert row down",
+                    },
+                    deleteColumn: {
+                      text: "Delete column",
+                    },
+                    deleteRow: {
+                      text: "Delete row",
+                    },
+                    deleteTable: {
+                      text: "Delete table",
+                    },
+                  },
+                },
+              },
             },
             placeholder: placeholder,
             theme: "snow",
@@ -172,4 +213,4 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
       </div>
     </>
   );
-};
+}

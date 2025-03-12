@@ -3,11 +3,17 @@
 import { useEffect, useState } from "react";
 import styles from "./productForm.module.scss";
 import { AiOutlineFileAdd } from "react-icons/ai";
-import { RichTextEditor } from "@/components/global/richTextEditor/RichTextEditor";
+// import { RichTextEditor } from "@/components/global/richTextEditor/RichTextEditor";
 import Image from "next/image";
 import Button from "@/components/admin/core/button/Button";
 import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const RichTextEditor = dynamic(
+  () => import("@/components/global/richTextEditor/RichTextEditor"),
+  { ssr: false }
+);
 
 export interface ProductFormState {
   seoTitle: string;
