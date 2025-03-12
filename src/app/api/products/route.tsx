@@ -5,12 +5,34 @@ import { deleteFile, uploadFile } from "../libs/uploads";
 import { prismaClient } from "@/prisma/prisma";
 import slugify from "slugify";
 
-// [PUBLIC] [GET] - Get product by ID or all products
+// [PUBLIC] [GET] - Get product by ID, slug or all products
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const productId = searchParams.get("id");
     const searchString = searchParams.get("searchString")?.trim();
+    const slug = searchParams.get("slug");
+
+    // Get single product by slug
+    if (slug) {
+      const product = await prismaClient.product.findUnique({
+        where: { slug },
+        include: { categories: { include: { category: true } } },
+      });
+
+      if (!product) {
+        return NextResponse.json(
+          { error: "Produkt nie znaleziony" },
+          { status: 404 }
+        );
+      }
+
+      return NextResponse.json({
+        ...product,
+        images: JSON.parse(product.images as string),
+        productFeatures: JSON.parse(product.productFeatures as string),
+      });
+    }
 
     // Get single product by ID
     if (productId) {

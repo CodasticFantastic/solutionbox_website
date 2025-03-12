@@ -1,0 +1,35 @@
+.productContentSection {
+  padding-top: 52px;
+  padding-bottom: 36px;
+  display: flex;
+
+  section {
+    border: 1px solid var(--border-color-tertiary);
+    border-radius: 8px;
+    padding: 12px;
+
+    h2 {
+      margin-bottom: 24px;
+    }
+  }
+
+  .left {
+    width: 70%;
+  }
+  .right {
+    width: 30%;
+    margin-left: 36px;
+  }
+
+  .specificationData {
+    colgroup {
+      col {
+        width: 50%;
+      }
+    }
+
+    tr {
+      border-bottom: 1px solid black !important;
+    }
+  }
+}

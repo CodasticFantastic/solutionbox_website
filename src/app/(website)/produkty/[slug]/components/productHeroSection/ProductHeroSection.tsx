@@ -9,8 +9,8 @@ interface ProductHeroSectionProps {
   title: string;
   image: string;
   productFeatures?: {
-    title: string;
-    description: string;
+    title: string | null;
+    description: string | null;
   }[];
 }
 
@@ -28,21 +28,23 @@ export default function ProductHeroSection({
           <h1>{title}</h1>
           {productFeatures && (
             <div className={styles.prodFeatures}>
-              {productFeatures.map((feature, index) => (
-                <div key={index} className={styles.feature}>
-                  <IoMdCheckmark
-                    size={20}
-                    className={styles.icon}
-                    style={{ color: "var(--font-primary)" }}
-                  />
-                  <div>
-                    <p className={styles.featureTitle}>{feature.title}</p>
-                    <p className={styles.featureDescription}>
-                      {feature.description}
-                    </p>
+              {productFeatures.map((feature, index) =>
+                feature.title ? (
+                  <div key={index} className={styles.feature}>
+                    <IoMdCheckmark
+                      size={20}
+                      className={styles.icon}
+                      style={{ color: "var(--font-primary)" }}
+                    />
+                    <div>
+                      <p className={styles.featureTitle}>{feature.title}</p>
+                      <p className={styles.featureDescription}>
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ) : null
+              )}
             </div>
           )}
           <div className={styles.btns}>
@@ -56,7 +58,12 @@ export default function ProductHeroSection({
         </div>
         <div className={styles.right}>
           <div className={styles.imgHolder}>
-            <Image src={image} alt={title} width={800} height={500} />
+            <Image
+              src={image}
+              alt={`Zdjęcie produktu - ${title}`}
+              width={800}
+              height={500}
+            />
           </div>
         </div>
       </div>
