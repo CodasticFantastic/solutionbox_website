@@ -132,7 +132,6 @@ export default function ProductForm({
 
   useEffect(() => {
     if (!defaultValues) return;
-    console.log("defaultValues:", defaultValues);
 
     const fetchImages = async () => {
       const processedImages = await Promise.all(
@@ -548,7 +547,13 @@ export default function ProductForm({
             label="Opis Produktu"
             placeholder="Opis produktu..."
             initialValue={formState.description}
-            initialDisabled={defaultValues === undefined ? false : true}
+            initialDisabled={
+              defaultValues
+                ? defaultValues?.description === ""
+                  ? false
+                  : true
+                : false
+            }
             onChange={(e) =>
               setFormState((prev) => ({ ...prev, description: e }))
             }
@@ -559,7 +564,13 @@ export default function ProductForm({
             label="Specyfikacja produktu"
             placeholder="Wklej tu tabele ze specyfikacją..."
             initialValue={formState.specification}
-            initialDisabled={defaultValues === undefined ? false : true}
+            initialDisabled={
+              defaultValues
+                ? defaultValues?.specification === ""
+                  ? false
+                  : true
+                : false
+            }
             onChange={(e) =>
               setFormState((prev) => ({ ...prev, specification: e }))
             }
