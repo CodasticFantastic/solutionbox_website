@@ -66,6 +66,15 @@ body {
   }
 }
 
+// Quill Global Styles
+.ql-toolbar.ql-snow {
+  background: var(--bg-light);
+}
+
+.ql-container.ql-snow {
+  background: var(--bg-light);
+}
+
 @media (max-width: 550px) {
   .container {
     padding: 0 12px;
