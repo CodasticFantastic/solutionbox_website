@@ -41,10 +41,12 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   const quillContainerRef = useRef<HTMLDivElement | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const quillInstanceRef = useRef<any>(null);
-  const [isLocked, setIsLocked] = useState(initialDisabled || false);
+  const [isLocked, setIsLocked] = useState(false);
   const [isMaxLengthReached, setIsMaxLengthReached] = useState(false);
   const [signsCount, setSignsCount] = useState(0);
   const [isQuillMounted, setIsQuillMounted] = useState(false);
+  const [disabledValueRerendering, setDisabledValueRerendering] =
+    useState(false);
 
   const unlockEditor = () => {
     quillInstanceRef.current?.enable();
@@ -112,13 +114,14 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   }, []);
 
   useEffect(() => {
-    if (initialValue && isQuillMounted) {
+    if (!disabledValueRerendering && initialValue && isQuillMounted) {
       quillInstanceRef.current.clipboard.dangerouslyPasteHTML(initialValue);
       if (initialDisabled) {
         setIsLocked(initialDisabled);
       }
+      setDisabledValueRerendering(true);
     }
-  }, [initialValue, isQuillMounted, initialDisabled]);
+  }, [initialValue, isQuillMounted]);
 
   return (
     <>

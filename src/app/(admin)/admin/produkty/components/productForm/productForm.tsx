@@ -159,7 +159,11 @@ export default function ProductForm({
   }, [defaultValues]);
 
   return (
-    <form className={styles.productForm} onSubmit={handleSubmit}>
+    <form
+      className={styles.productForm}
+      onSubmit={handleSubmit}
+      onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+    >
       {/* SEO Settings */}
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>Ustawienia SEO</h3>
@@ -535,7 +539,7 @@ export default function ProductForm({
             label="Opis Produktu"
             placeholder="Opis produktu..."
             initialValue={formState.description}
-              initialDisabled={defaultValues === undefined ? false : true}
+            initialDisabled={defaultValues === undefined ? false : true}
             onChange={(e) =>
               setFormState((prev) => ({ ...prev, description: e }))
             }
