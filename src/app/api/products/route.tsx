@@ -9,6 +9,7 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const productId = searchParams.get("id");
+    const searchString = searchParams.get("searchString")?.trim();
 
     // Get single product by ID
     if (productId) {
@@ -31,8 +32,19 @@ export async function GET(req: NextRequest) {
       });
     }
 
+    // Prepare search condition based on search string
+    const whereCondition: Prisma.ProductWhereInput = searchString
+      ? {
+          OR: [
+            { name: { contains: searchString.toLowerCase() } },
+            { producer: { contains: searchString.toLowerCase() } },
+          ],
+        }
+      : {};
+
     // Get all products
     const products = await prismaClient.product.findMany({
+      where: whereCondition,
       include: { categories: { include: { category: true } } },
     });
 
@@ -44,6 +56,7 @@ export async function GET(req: NextRequest) {
       }))
     );
   } catch (error) {
+    console.error("Błąd pobierania produktów:", error);
     return NextResponse.json(
       { error: "Błąd serwera", details: error },
       { status: 500 }

@@ -17,6 +17,13 @@ export async function GET(req: NextRequest) {
       // Return single category by ID
       const category = await prisma.productCategory.findUnique({
         where: { id: Number(categoryId) },
+        include: {
+          products: {
+            include: {
+              product: true,
+            },
+          },
+        },
       });
 
       if (!category) {

@@ -81,6 +81,14 @@ export default function Kategorie() {
                   </div>
                   <div className={styles.categoryTileBtns}>
                     <Button
+                      variant="PRIMARY"
+                      onClick={() =>
+                        router.push(`/admin/kategorie/${category.id}/produkty`)
+                      }
+                    >
+                      Przypisz produkty
+                    </Button>
+                    <Button
                       variant="INFO"
                       onClick={() =>
                         router.push(`/admin/kategorie/edytuj/${category.id}`)
