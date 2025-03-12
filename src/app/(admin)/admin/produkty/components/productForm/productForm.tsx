@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import styles from "./productForm.module.scss";
 import { AiOutlineFileAdd } from "react-icons/ai";
-// import { RichTextEditor } from "@/components/global/richTextEditor/RichTextEditor";
 import Image from "next/image";
 import Button from "@/components/admin/core/button/Button";
 import { MdDelete } from "react-icons/md";
@@ -21,6 +20,7 @@ export interface ProductFormState {
   producer: string;
   name: string;
   description: string;
+  specification: string;
   price: string;
   images: { img: File; isDefault: boolean }[];
   productFeatures: { title: string; description: string }[];
@@ -44,6 +44,7 @@ export default function ProductForm({
     producer: "",
     name: "",
     description: "",
+    specification: "",
     price: "",
     images: [],
     productFeatures: [
@@ -78,6 +79,7 @@ export default function ProductForm({
     formData.append("producer", formState.producer);
     formData.append("name", formState.name);
     formData.append("description", formState.description);
+    formData.append("specification", formState.specification);
     formData.append("price", formState.price);
     formData.append(
       "productFeatures",
@@ -130,6 +132,7 @@ export default function ProductForm({
 
   useEffect(() => {
     if (!defaultValues) return;
+    console.log("defaultValues:", defaultValues);
 
     const fetchImages = async () => {
       const processedImages = await Promise.all(
@@ -548,6 +551,17 @@ export default function ProductForm({
             initialDisabled={defaultValues === undefined ? false : true}
             onChange={(e) =>
               setFormState((prev) => ({ ...prev, description: e }))
+            }
+          />
+        </div>
+        <div style={{ marginTop: 12 }}>
+          <RichTextEditor
+            label="Specyfikacja produktu"
+            placeholder="Wklej tu tabele ze specyfikacją..."
+            initialValue={formState.specification}
+            initialDisabled={defaultValues === undefined ? false : true}
+            onChange={(e) =>
+              setFormState((prev) => ({ ...prev, specification: e }))
             }
           />
         </div>

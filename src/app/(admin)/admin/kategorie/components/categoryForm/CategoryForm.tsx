@@ -1,11 +1,16 @@
 "use client";
 
-import { RichTextEditor } from "@/components/global/richTextEditor/RichTextEditor";
 import { useEffect, useState } from "react";
 import styles from "./categoryForm.module.scss";
 import Button from "@/components/admin/core/button/Button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const RichTextEditor = dynamic(
+  () => import("@/components/global/richTextEditor/RichTextEditor"),
+  { ssr: false }
+);
 
 export interface CategoryFormState {
   seoTitle: string;

@@ -38,6 +38,7 @@ export default function EdytujProdukt() {
         producer: data.producer || "",
         name: data.name || "",
         description: data.description || "",
+        specification: data.specification || "",
         price: data.price || "",
         images: data.images || [],
         productFeatures: [

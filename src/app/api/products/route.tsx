@@ -80,6 +80,7 @@ export async function POST(req: NextRequest) {
     const producer = formData.get("producer") as string;
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
+    const specification = formData.get("specification") as string;
     const price = formData.get("price") as string;
     const images = formData.getAll("images") as File[];
     const productFeatures = formData.get("productFeatures") as string;
@@ -116,7 +117,8 @@ export async function POST(req: NextRequest) {
         producer,
         name,
         description,
-        price: price ? Prisma.Decimal(price) : 0,
+        specification,
+        price: price ? Prisma.Decimal(price) : undefined,
         images: JSON.stringify(uploadedImages),
         productFeatures: productFeatures ? productFeatures : "[]",
       },
@@ -166,6 +168,7 @@ export async function PUT(req: NextRequest) {
     const producer = formData.get("producer") as string;
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
+    const specification = formData.get("specification") as string;
     const price = formData.get("price") as string;
     const images = formData.getAll("images") as File[];
     const productFeatures = formData.get("productFeatures") as string;
@@ -221,7 +224,8 @@ export async function PUT(req: NextRequest) {
         producer,
         name,
         description,
-        price: Prisma.Decimal(price),
+        specification,
+        price: price ? Prisma.Decimal(price) : undefined,
         images: JSON.stringify(uploadedImages),
         productFeatures: productFeatures ? productFeatures : "[]",
       },

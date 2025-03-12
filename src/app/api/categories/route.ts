@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient, UserRole } from "@prisma/client";
+import { UserRole } from "@prisma/client";
 import slugify from "slugify";
 import { auth } from "@/app/auth/auth";
 import { deleteFile, uploadFile } from "../libs/uploads";
-
-const prisma = new PrismaClient();
+import { prismaClient } from "@/prisma/prisma";
 
 // [PUBLIC] [GET] - Download all categories
 export async function GET(req: NextRequest) {
@@ -15,7 +14,7 @@ export async function GET(req: NextRequest) {
 
     if (categoryId) {
       // Return single category by ID
-      const category = await prisma.productCategory.findUnique({
+      const category = await prismaClient.productCategory.findUnique({
         where: { id: Number(categoryId) },
         include: {
           products: {
@@ -37,7 +36,7 @@ export async function GET(req: NextRequest) {
     }
 
     // If there is no ID, return all categories
-    const categories = await prisma.productCategory.findMany();
+    const categories = await prismaClient.productCategory.findMany();
     return NextResponse.json(categories);
   } catch (error) {
     return NextResponse.json(
@@ -77,7 +76,7 @@ export async function POST(req: NextRequest) {
       imageUrl = await uploadFile(image);
     }
 
-    const category = await prisma.productCategory.create({
+    const category = await prismaClient.productCategory.create({
       data: {
         seoTitle: seoTitle,
         seoDescription: seoDescription,
@@ -128,7 +127,7 @@ export async function PUT(req: NextRequest) {
     }
 
     // Get category from database
-    const existingCategory = await prisma.productCategory.findUnique({
+    const existingCategory = await prismaClient.productCategory.findUnique({
       where: { id: Number(categoryId) },
     });
 
@@ -153,7 +152,7 @@ export async function PUT(req: NextRequest) {
     }
 
     // Update category in database
-    const updatedCategory = await prisma.productCategory.update({
+    const updatedCategory = await prismaClient.productCategory.update({
       where: { id: Number(categoryId) },
       data: {
         seoTitle: seoTitle || existingCategory.seoTitle,
@@ -184,7 +183,7 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "Brak ID" }, { status: 400 });
   }
 
-  const category = await prisma.productCategory.findUnique({
+  const category = await prismaClient.productCategory.findUnique({
     where: { id: Number(id) },
   });
 
@@ -203,7 +202,7 @@ export async function DELETE(req: NextRequest) {
     }
   }
 
-  await prisma.productCategory.delete({
+  await prismaClient.productCategory.delete({
     where: { id: Number(id) },
   });
 

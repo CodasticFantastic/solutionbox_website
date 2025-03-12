@@ -34,7 +34,7 @@ model ProductCategory {
   seoDescription String                 @default("")
   name           String
   slug           String                 @unique
-  description    String
+  description    String                 @db.Text
   image          String
   products       CategoriesOnProducts[]
   createdAt      DateTime               @default(now())
@@ -47,8 +47,9 @@ model Product {
   seoDescription  String                 @default("")
   producer        String
   name            String
-  description     String?
-  price           Decimal
+  description     String?                @db.Text
+  specification   String?                @db.Text
+  price           Decimal?
   images          Json                   @default("[]")
   categories      CategoriesOnProducts[]
   productFeatures Json                   @default("[]")
