@@ -20,11 +20,12 @@ async function getCategoryData(slug: string): Promise<ProductCategory> {
   return res.json();
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const categoryData = await getCategoryData(params.slug);
 
   return {
@@ -37,11 +38,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function KategoriaProduktowa({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function KategoriaProduktowa(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+) {
+  const params = await props.params;
   const categoryData = await getCategoryData(params.slug);
 
   return (
