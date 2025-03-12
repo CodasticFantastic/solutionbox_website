@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
-import styles from "./productsCategories.module.scss";
 import Image from "next/image";
+import { useRef } from "react";
+import styles from "./productsCategories.module.scss";
+import Button from "@/components/website/core/button/Button";
 
 const categoriesConfig = [
   {
@@ -51,11 +55,33 @@ const categoriesConfig = [
 ];
 
 export default function ProductsCategories() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 300;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className={styles.productsCategories}>
       <div className={`container ${styles.sectionContainer}`}>
-        <h2>Kategorie produktów</h2>
-        <div className={styles.categoriesHolder}>
+        <div className={styles.sectionHeader}>
+          <h2>Kategorie produktów</h2>
+          <div className={styles.controls}>
+            <Button variant="DARK" onClick={() => scroll("left")}>
+              {"<"}
+            </Button>
+            <Button variant="DARK" onClick={() => scroll("right")}>
+              {">"}
+            </Button>
+          </div>
+        </div>
+        <div ref={scrollContainerRef} className={styles.categoriesHolder}>
           {categoriesConfig.map((category) => (
             <Link
               key={category.title}
@@ -71,6 +97,14 @@ export default function ProductsCategories() {
               <p>{category.title}</p>
             </Link>
           ))}
+        </div>
+        <div className={styles.controls}>
+          <Button variant="DARK" onClick={() => scroll("left")}>
+            {"<"}
+          </Button>
+          <Button variant="DARK" onClick={() => scroll("right")}>
+            {">"}
+          </Button>
         </div>
       </div>
     </section>
