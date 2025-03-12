@@ -111,7 +111,7 @@ export default function Produkty() {
                   isOpen={isDeleteModalOpen === product.id}
                   onConfirm={() => deleteProduct(product.id)}
                 >
-                  Czy na pewno chcesz usunąć kategorię?
+                  Czy na pewno chcesz usunąć produkt?
                 </ModalOverlay>
               </React.Fragment>
             ))}
