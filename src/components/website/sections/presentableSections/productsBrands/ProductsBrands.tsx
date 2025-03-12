@@ -5,27 +5,27 @@ import Image from "next/image";
 const brandsConfig = [
   {
     title: "Comagrav",
-    slug: "/produkty/producenci/comagrav",
+    slug: "/produkty/kategoria/comagrav",
     img: "/branding/coop/comagrav.jpg",
   },
   {
     title: "Eagle",
-    slug: "/produkty/producenci/eagle",
+    slug: "/produkty/kategoria/eagle",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Ser Tec",
-    slug: "/produkty/producenci/ser-tec",
+    slug: "/produkty/kategoria/ser-tec",
     img: "/branding/coop/SER_TEC.png",
   },
   {
     title: "FoxUv",
-    slug: "/produkty/producenci/foxuv",
+    slug: "/produkty/kategoria/foxuv",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Green Clean",
-    slug: "/produkty/producenci/green-clean",
+    slug: "/produkty/kategoria/green-clean",
     img: "/imgs/category-plotery.png",
   },
   {
@@ -35,27 +35,27 @@ const brandsConfig = [
   },
   {
     title: "Solifuse",
-    slug: "/produkty/producenci/solifuse",
+    slug: "/produkty/kategoria/solifuse",
     img: "/branding/coop/SoliFuse.png",
   },
   {
     title: "Loklik",
-    slug: "/produkty/producenci/loklik",
+    slug: "/produkty/kategoria/loklik",
     img: "/branding/coop/LOKLIK.png",
   },
   {
     title: "MyYard",
-    slug: "/produkty/producenci/myyard",
+    slug: "/produkty/kategoria/myyard",
     img: "/branding/coop/MYYARD.jpg",
   },
   {
     title: "An2Di",
-    slug: "/produkty/producenci/an2di",
+    slug: "/produkty/kategoria/an2di",
     img: "/imgs/category-plotery.png",
   },
   {
     title: "Flux",
-    slug: "/produkty/producenci/flux",
+    slug: "/produkty/kategoria/flux",
     img: "/branding/coop/FLUX.png",
   },
 ];
