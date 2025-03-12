@@ -47,6 +47,7 @@ model Product {
   seoDescription  String                 @default("")
   producer        String
   name            String
+  slug            String                 @unique
   description     String?                @db.Text
   specification   String?                @db.Text
   price           Decimal?

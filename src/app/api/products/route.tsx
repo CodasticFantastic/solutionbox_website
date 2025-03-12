@@ -3,6 +3,7 @@ import { Prisma, UserRole } from "@prisma/client";
 import { auth } from "@/app/auth/auth";
 import { deleteFile, uploadFile } from "../libs/uploads";
 import { prismaClient } from "@/prisma/prisma";
+import slugify from "slugify";
 
 // [PUBLIC] [GET] - Get product by ID or all products
 export async function GET(req: NextRequest) {
@@ -109,6 +110,9 @@ export async function POST(req: NextRequest) {
       uploadedImages.push(...results);
     }
 
+    // Generate slug
+    const slug = slugify(name, { lower: true, strict: true });
+
     // Create product in database
     const product = await prismaClient.product.create({
       data: {
@@ -116,6 +120,7 @@ export async function POST(req: NextRequest) {
         seoDescription,
         producer,
         name,
+        slug,
         description,
         specification,
         price: price ? Prisma.Decimal(price) : undefined,
@@ -215,6 +220,9 @@ export async function PUT(req: NextRequest) {
       uploadedImages.push(...results);
     }
 
+    // Update slug
+    const slug = slugify(name, { lower: true, strict: true });
+
     // Update product in database
     const updatedProduct = await prismaClient.product.update({
       where: { id: Number(productId) },
@@ -223,6 +231,7 @@ export async function PUT(req: NextRequest) {
         seoDescription,
         producer,
         name,
+        slug,
         description,
         specification,
         price: price ? Prisma.Decimal(price) : undefined,
@@ -237,6 +246,68 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json(
       { error: "Błąd aktualizacji produktu" },
       { status: 400 }
+    );
+  }
+}
+
+// [PRIVATE] [DELETE] - Delete product
+export async function DELETE(req: NextRequest) {
+  const session = await auth();
+
+  if (!session || session.user.role !== UserRole.ADMIN) {
+    return NextResponse.json({ error: "Brak uprawnień" }, { status: 403 });
+  }
+
+  try {
+    const { searchParams } = new URL(req.url);
+    const productId = searchParams.get("id");
+
+    if (!productId) {
+      return NextResponse.json({ error: "Brak ID produktu" }, { status: 400 });
+    }
+
+    const product = await prismaClient.product.findUnique({
+      where: { id: Number(productId) },
+      include: { categories: true },
+    });
+
+    if (!product) {
+      return NextResponse.json(
+        { error: "Produkt nie istnieje" },
+        { status: 404 }
+      );
+    }
+
+    // Delete Foreign relationships
+    await prismaClient.categoriesOnProducts.deleteMany({
+      where: { productId: Number(productId) },
+    });
+
+    // Delete images from filesystem
+    if (product.images) {
+      const imagesArray = JSON.parse(product.images as string);
+      const deletePromises = imagesArray.map(async (image: { img: string }) => {
+        try {
+          await deleteFile(image.img);
+        } catch (error) {
+          console.error(`Błąd usuwania pliku ${image.img}:`, error);
+        }
+      });
+
+      await Promise.all(deletePromises);
+    }
+
+    // Delete product from database
+    await prismaClient.product.delete({
+      where: { id: Number(productId) },
+    });
+
+    return NextResponse.json({ message: "Produkt usunięty" }, { status: 200 });
+  } catch (error) {
+    console.error("Błąd usuwania produktu:", error);
+    return NextResponse.json(
+      { error: "Błąd serwera", details: error },
+      { status: 500 }
     );
   }
 }
