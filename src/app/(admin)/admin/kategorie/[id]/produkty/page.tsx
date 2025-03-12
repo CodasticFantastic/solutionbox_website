@@ -45,8 +45,6 @@ export default function ProduktyWKategorii() {
 
       const data = await response.json();
 
-      console.log(data);
-
       setCategoryData(data);
     } catch {
       alert("Błąd podczas pobierania danych kategorii!");
