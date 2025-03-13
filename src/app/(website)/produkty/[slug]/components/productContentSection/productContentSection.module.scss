@@ -68,9 +68,14 @@
   }
 
   .specificationData {
+    table {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
     colgroup {
       col {
-        width: 50%;
+        width: 50% !important;
       }
     }
 
@@ -150,6 +155,21 @@
     }
     .right {
       width: 100%;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .productContentSection {
+    .specificationData {
+      tbody {
+        tr {
+          td,
+          th {
+            padding: 18px 6px;
+          }
+        }
+      }
     }
   }
 }
