@@ -1,5 +1,6 @@
 services:
   app:
+    container_name: solutionbox_website
     build:
       context: .
       dockerfile: Dockerfile
