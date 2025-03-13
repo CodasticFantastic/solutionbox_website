@@ -28,7 +28,7 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/prisma ./prisma
 
 RUN chown -R node:node /app/.next
-RUN chown -R node:node /app/uploads
+RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
 
 EXPOSE 3000
 USER node
