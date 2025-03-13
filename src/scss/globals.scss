@@ -36,6 +36,14 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+
+  .scrollTo {
+    scroll-margin-top: 124px;
+  }
+}
+
 body {
   color: var(--font-dark);
   background: var(--bg-light);

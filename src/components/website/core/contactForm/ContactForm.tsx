@@ -45,7 +45,11 @@ export default function ContactForm() {
   }
 
   return (
-    <form className={styles.contactForm} onSubmit={handleSubmit}>
+    <form
+      id="formularz-kontaktowy"
+      className={`${styles.contactForm} scrollTo`}
+      onSubmit={handleSubmit}
+    >
       <h2>Formularz kontaktowy</h2>
       <input
         className={styles.inputText}
@@ -80,14 +84,37 @@ export default function ContactForm() {
         required
       />
       <label className={styles.inputCheckbox}>
-        <input type="checkbox" checked={formData.agreement} onChange={(e) => setFormData({ ...formData, agreement: e.target.checked })} required />
+        <input
+          type="checkbox"
+          checked={formData.agreement}
+          onChange={(e) =>
+            setFormData({ ...formData, agreement: e.target.checked })
+          }
+          required
+        />
         <span>Wyrażam zgodę na kontakt</span>
       </label>
-      <Button type="submit" variant={formStatus === "SUCCESS" ? "DARK" : "ORANGE"} disabled={formStatus === "LOADING" || formStatus === "SUCCESS"}>
-        {formStatus === "LOADING" ? "Wysyłanie wiadomości..." : formStatus === "SUCCESS" ? "Wiadomość wysłana" : "Wyslij"}
+      <Button
+        type="submit"
+        variant={formStatus === "SUCCESS" ? "DARK" : "ORANGE"}
+        disabled={formStatus === "LOADING" || formStatus === "SUCCESS"}
+      >
+        {formStatus === "LOADING"
+          ? "Wysyłanie wiadomości..."
+          : formStatus === "SUCCESS"
+          ? "Wiadomość wysłana"
+          : "Wyslij"}
       </Button>
-      {formStatus === "ALL_FIELDS_ARE_REQUIRED" && <p className={styles.error}>Błąd: Wszystkie pola muszą być wypełnione.</p>}
-      {formStatus === "ERROR" && <p className={styles.error}>Wystąpił problem podczas wysyłania wiadomości. Sprobuj ponownie.</p>}
+      {formStatus === "ALL_FIELDS_ARE_REQUIRED" && (
+        <p className={styles.error}>
+          Błąd: Wszystkie pola muszą być wypełnione.
+        </p>
+      )}
+      {formStatus === "ERROR" && (
+        <p className={styles.error}>
+          Wystąpił problem podczas wysyłania wiadomości. Sprobuj ponownie.
+        </p>
+      )}
     </form>
   );
 }

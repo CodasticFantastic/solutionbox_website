@@ -5,6 +5,9 @@
   font-weight: 600;
   letter-spacing: 2px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
 
   &.btnOrange {
     border: 1px solid var(--border-color-primary);
