@@ -73,9 +73,7 @@ export default async function ProduktPage(props: {
                 ]
               : []
           }
-          image={`${
-            process.env.NEXT_PUBLIC_DOMAIN
-          }/api/files/${getDefaultProductImageId(productData.images)}`}
+          image={`/api/files/${getDefaultProductImageId(productData.images)}`}
         />
         <SectionDividerOrangeCircle variant="WHITE" />
       </div>

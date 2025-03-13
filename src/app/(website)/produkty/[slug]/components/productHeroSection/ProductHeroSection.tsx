@@ -63,6 +63,8 @@ export default function ProductHeroSection({
               alt={`Zdjęcie produktu - ${title}`}
               width={800}
               height={500}
+              priority
+              loading="eager"
             />
           </div>
         </div>

@@ -52,7 +52,6 @@ function CategoryProduct({ product }: CategoryProductProps) {
           width={200}
           height={200}
           loading="lazy"
-          // unoptimized={true}
         />
       </div>
       <div className={styles.productInfo}>
