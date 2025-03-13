@@ -47,13 +47,12 @@ function CategoryProduct({ product }: CategoryProductProps) {
     <Link href={`/produkty/${product.slug}`} className={styles.categoryProduct}>
       <div className={styles.imgHolder}>
         <Image
-          src={`${
-            process.env.NEXT_PUBLIC_DOMAIN
-          }/api/files/${getDefaultProductImageId(product.images)}`}
+          src={`/api/files/${getDefaultProductImageId(product.images)}`}
           alt={`Zdjęcie produktu - ${product.name}`}
           width={200}
           height={200}
-          unoptimized={true}
+          loading="lazy"
+          // unoptimized={true}
         />
       </div>
       <div className={styles.productInfo}>
