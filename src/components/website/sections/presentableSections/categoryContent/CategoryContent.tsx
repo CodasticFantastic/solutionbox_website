@@ -53,6 +53,7 @@ function CategoryProduct({ product }: CategoryProductProps) {
           alt={`Zdjęcie produktu - ${product.name}`}
           width={200}
           height={200}
+          unoptimized={true}
         />
       </div>
       <div className={styles.productInfo}>
