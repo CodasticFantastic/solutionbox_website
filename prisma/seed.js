@@ -9,11 +9,11 @@ async function main() {
   });
 
   if (!adminExists) {
-    const hashedPassword = await bcrypt.hash("admin123", 10); // Zmień hasło na silniejsze w produkcji
+    const hashedPassword = await bcrypt.hash("admin", 10); // Zmień hasło na silniejsze w produkcji
 
     await prisma.user.create({
       data: {
-        email: "admin@admin.com",
+        email: "admin@solutionbox.pl",
         username: "admin",
         password: hashedPassword,
         role: "ADMIN",
