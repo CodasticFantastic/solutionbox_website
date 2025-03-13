@@ -26,11 +26,14 @@ RUN npm ci --only=production
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/prisma ./prisma
-COPY entrypoint.sh /entrypoint.sh
 
-RUN chmod +x /entrypoint.sh
+RUN chown -R node:node /app/.next
+RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
+RUN mkdir -p /app/uploads/images && chown -R node:node /app/uploads/images
+RUN mkdir -p /app/uploads/documents && chown -R node:node /app/uploads/documents
+RUN chmod -R 777 /app/uploads
 
 EXPOSE 3000
 USER node
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && npm run start"]
