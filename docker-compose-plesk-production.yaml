@@ -1,6 +1,8 @@
 services:
   app:
     container_name: solutionbox_website
+    image: solutionbox_website
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
