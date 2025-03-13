@@ -34,11 +34,6 @@ const brandsConfig = [
     img: "/branding/coop/METIS.jpg",
   },
   {
-    title: "Solifuse",
-    slug: "/produkty/kategoria/solifuse",
-    img: "/branding/coop/SoliFuse.png",
-  },
-  {
     title: "Loklik",
     slug: "/produkty/kategoria/loklik",
     img: "/branding/coop/LOKLIK.png",

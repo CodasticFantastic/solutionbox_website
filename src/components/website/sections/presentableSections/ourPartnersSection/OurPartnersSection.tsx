@@ -13,7 +13,6 @@ export default function OurPartnersSection() {
             "/branding/coop/comagrav.jpg",
             "/branding/coop/SER_TEC.png",
             "/branding/coop/METIS.jpg",
-            "/branding/coop/SoliFuse.png",
             "/branding/coop/LOKLIK.png",
             "/branding/coop/MYYARD.jpg",
             "/branding/coop/FLUX.png",

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import styles from "./productsCategories.module.scss";
 import Button from "@/components/website/core/button/Button";
+import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const categoriesConfig = [
   {
@@ -74,10 +75,10 @@ export default function ProductsCategories() {
           <h2>Kategorie produktów</h2>
           <div className={styles.controls}>
             <Button variant="DARK" onClick={() => scroll("left")}>
-              {"<"}
+              <MdArrowBack />
             </Button>
             <Button variant="DARK" onClick={() => scroll("right")}>
-              {">"}
+              <MdArrowForward />
             </Button>
           </div>
         </div>
@@ -99,11 +100,19 @@ export default function ProductsCategories() {
           ))}
         </div>
         <div className={styles.controls}>
-          <Button variant="DARK" onClick={() => scroll("left")}>
-            {"<"}
+          <Button
+            variant="DARK"
+            onClick={() => scroll("left")}
+            style={{ justifyContent: "center" }}
+          >
+            <MdArrowBack />
           </Button>
-          <Button variant="DARK" onClick={() => scroll("right")}>
-            {">"}
+          <Button
+            variant="DARK"
+            onClick={() => scroll("right")}
+            style={{ justifyContent: "center" }}
+          >
+            <MdArrowForward />
           </Button>
         </div>
       </div>
