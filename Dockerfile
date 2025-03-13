@@ -32,4 +32,4 @@ RUN chown -R node:node /app/.next
 EXPOSE 3000
 USER node
 
-CMD ["sh", "-c", "npx prisma migrate deploy && npm run start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && npm run start"]
