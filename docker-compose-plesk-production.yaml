@@ -23,4 +23,8 @@ services:
     extra_hosts:
       - "localhost:host-gateway"
     volumes:
-      - ./uploads:/app/uploads:rw
+      - uploads_data:/app/uploads
+
+volumes:
+  uploads_data:
+    driver: local
