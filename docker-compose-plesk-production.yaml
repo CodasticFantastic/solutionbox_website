@@ -1,5 +1,6 @@
 services:
   app:
+    network_mode: "host"
     build:
       context: .
       dockerfile: Dockerfile
@@ -14,6 +15,5 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - AUTH_SECRET=${AUTH_SECRET}
       - NEXT_PUBLIC_DOMAIN=${NEXT_PUBLIC_DOMAIN}
-      - NODE_ENV="production"
     volumes:
       - ./uploads:/app/uploads
