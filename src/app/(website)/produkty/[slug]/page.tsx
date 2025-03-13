@@ -44,8 +44,6 @@ export default async function ProduktPage(props: {
   const params = await props.params;
   const productData = await getProductData(params.slug);
 
-  console.log(productData);
-
   return (
     <main>
       <div data-nav-bg-color={`${PageHeaderBackgroundColor.DEFAULT}`}>
