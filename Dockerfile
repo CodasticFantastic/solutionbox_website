@@ -25,6 +25,7 @@ RUN npm ci --only=production
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
+RUN mkdir -p /app/.next/cache/images && chown -R 10019:1004 /app/.next/cache
 COPY --from=builder /app/prisma ./prisma
 
 RUN chown -R node:node /app/.next
