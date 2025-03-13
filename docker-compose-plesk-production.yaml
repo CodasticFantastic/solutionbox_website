@@ -24,4 +24,4 @@ services:
       - "localhost:host-gateway"
     volumes:
       - ./uploads:/app/uploads:rw
-    user: "1000:1000"
+    user: "10019:1004"
