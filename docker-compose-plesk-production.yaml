@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3300:3000"
+    environment:
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=465
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - CONTACT_EMAIL=${CONTACT_EMAIL}
+      - DATABASE_URL=${DATABASE_URL}
+      - AUTH_SECRET=${AUTH_SECRET}
+      - NEXT_PUBLIC_DOMAIN=${NEXT_PUBLIC_DOMAIN}
+      - NODE_ENV="production"
+    volumes:
+      - ./uploads:/app/uploads
