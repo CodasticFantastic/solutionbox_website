@@ -24,4 +24,8 @@ services:
       - "localhost:host-gateway"
     volumes:
       - ./uploads:/app/uploads:rw
-    user: "10019:1004"
+    user: "${UID}:${GID}"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
