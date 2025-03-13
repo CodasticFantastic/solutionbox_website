@@ -11,7 +11,7 @@
     "prisma:seed": "prisma db seed"
   },
   "prisma": {
-    "seed": "node prisma/seed.js"
+    "seed": "node prisma/seed.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.4.1",
