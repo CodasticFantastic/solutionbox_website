@@ -25,14 +25,14 @@ RUN npm ci --only=production
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
-RUN mkdir -p /app/.next/cache/images && chown -R 10019:1004 /app/.next/cache
 COPY --from=builder /app/prisma ./prisma
 
-RUN chown -R node:node /app/.next
-RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
-RUN mkdir -p /app/uploads/images && chown -R node:node /app/uploads/images
-RUN mkdir -p /app/uploads/documents && chown -R node:node /app/uploads/documents
-RUN chmod -R 777 /app/uploads
+RUN  chown -R 10019:1004 /app/.next/cache
+# RUN chown -R node:node /app/.next
+# RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
+# RUN mkdir -p /app/uploads/images && chown -R node:node /app/uploads/images
+# RUN mkdir -p /app/uploads/documents && chown -R node:node /app/uploads/documents
+# RUN chmod -R 777 /app/uploads
 
 EXPOSE 3000
 USER node
