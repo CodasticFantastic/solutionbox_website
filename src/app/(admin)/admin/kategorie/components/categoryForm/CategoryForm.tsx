@@ -206,7 +206,13 @@ export default function CategoryForm({
           label="Opis Kategorii"
           placeholder="Opis Kategorii"
           initialValue={formState.description}
-          initialDisabled={defaultValues === undefined ? false : true}
+          initialDisabled={
+            defaultValues
+              ? defaultValues?.description === ""
+                ? false
+                : true
+              : false
+          }
           onChange={(e) =>
             setFormState((prev) => ({ ...prev, description: e }))
           }
