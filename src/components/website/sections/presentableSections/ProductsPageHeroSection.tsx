@@ -2,7 +2,7 @@ import BasicHeroSectionOnlyText from "../basicSections/basicHeroSectionOnlyText/
 
 export default function ProductsPageHeroSection() {
   return (
-    <BasicHeroSectionOnlyText>
+    <BasicHeroSectionOnlyText maxHeight={630}>
       <h1>Sprawdź jakie produkty możemy Ci zaoferować</h1>
       <p>
         Współpracujemy z najlepszymi firmami w branży technologicznej, aby

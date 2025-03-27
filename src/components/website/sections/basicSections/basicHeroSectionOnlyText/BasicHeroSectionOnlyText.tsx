@@ -3,11 +3,18 @@ import BasicHeroSection from "../../basicSections/basicHeroSection/BasicHeroSect
 
 interface BasicHeroSectionOnlyTextProps {
   children: React.ReactNode;
+  maxHeight?: number;
 }
 
-export default function BasicHeroSectionOnlyText({ children }: BasicHeroSectionOnlyTextProps) {
+export default function BasicHeroSectionOnlyText({
+  children,
+  maxHeight,
+}: BasicHeroSectionOnlyTextProps) {
   return (
-    <BasicHeroSection className={styles.basicHeroSectionOnlyText}>
+    <BasicHeroSection
+      className={styles.basicHeroSectionOnlyText}
+      maxSectionHeigh={maxHeight}
+    >
       <div className={styles.left}>{children}</div>
     </BasicHeroSection>
   );
