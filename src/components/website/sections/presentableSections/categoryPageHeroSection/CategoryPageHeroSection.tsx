@@ -19,7 +19,7 @@ export default function CategoryPageHeroSection({
         </div>
         <div className={styles.right}>
           <Image
-            src={`/api/files/${categoryData.image}`}
+            src={`/api/files/${categoryData?.image}`}
             alt="Category Page Hero Section"
             width={800}
             height={800}

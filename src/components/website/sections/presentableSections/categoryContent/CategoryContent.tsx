@@ -47,7 +47,11 @@ function CategoryProduct({ product }: CategoryProductProps) {
     <Link href={`/produkty/${product.slug}`} className={styles.categoryProduct}>
       <div className={styles.imgHolder}>
         <Image
-          src={`/api/files/${getDefaultProductImageId(product.images)}`}
+          src={
+            getDefaultProductImageId(product.images) === undefined
+              ? "/brak-zdjecia.png"
+              : `/api/files/${getDefaultProductImageId(product.images)}`
+          }
           alt={`Zdjęcie produktu - ${product.name}`}
           width={200}
           height={200}

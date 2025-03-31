@@ -12,8 +12,8 @@ export function convertFilesStringToJSON(string: string): IProductImageItem[] {
   return productImages;
 }
 
-export function getDefaultProductImageId(string: string): string {
+export function getDefaultProductImageId(string: string): string | undefined {
   const productImages = convertFilesStringToJSON(string);
 
-  return productImages.find((image) => image.isDefault)!.img;
+  return productImages.find((image) => image.isDefault)?.img;
 }
