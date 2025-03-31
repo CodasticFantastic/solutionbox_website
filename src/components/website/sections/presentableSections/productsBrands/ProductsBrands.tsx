@@ -30,7 +30,7 @@ const brandsConfig = [
   },
   {
     title: "Metis",
-    slug: "/produty/producenci/metis",
+    slug: "/produkty/kategoria/metis",
     img: "/branding/coop/METIS.jpg",
   },
   {
