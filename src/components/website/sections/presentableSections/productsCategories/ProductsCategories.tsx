@@ -9,49 +9,59 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const categoriesConfig = [
   {
+    title: "Usługi",
+    slug: "/produkty/kategoria/uslugi",
+    img: "/imgs/kategoria-uslugi.webp",
+  },
+  {
     title: "Plotery",
     slug: "/produkty/kategoria/plotery",
-    img: "/imgs/category-plotery.png",
+    img: "/imgs/kategoria-plotery.webp",
   },
   {
-    title: "Urządzenia frezujące",
+    title: "Urządzenia Frezujące",
     slug: "/produkty/kategoria/urzadzenia-frezujace",
-    img: "/imgs/category-plotery.png",
-  },
-  {
-    title: "Drukarki strukturalne UV",
-    slug: "/produkty/kategoria/drukarki-strukturalne-uv",
-    img: "/imgs/category-plotery.png",
-  },
-  {
-    title: "Drukarki kanałowe 3D",
-    slug: "/produkty/kategoria/drukarki-kanalowe-3d",
-    img: "/imgs/category-plotery.png",
+    img: "/imgs/kategoria-urzadzenia-frezujace.webp",
   },
   {
     title: "Skanery strukturalne",
     slug: "/produkty/kategoria/skanery-strukturalne",
-    img: "/imgs/category-plotery.png",
+    img: "/imgs/kategoria-skanery-strukturalne.webp",
+  },
+  {
+    title: "Drukarki UV",
+    slug: "/produkty/kategoria/drukarki-uv",
+    img: "/imgs/kategoria-drukarki-uv.png",
+  },
+  {
+    title: "Drukarki Strukturalne",
+    slug: "/produkty/kategoria/drukarki-strukturalne",
+    img: "/imgs/kategoria-drukarki-strukturalne.png",
+  },
+  {
+    title: "Drukarki Hybrydowe",
+    slug: "/produkty/kategoria/drukarki-hybrydowe",
+    img: "/brak-zdjecia.png",
   },
   {
     title: "Lasery",
     slug: "/produkty/kategoria/lasery",
-    img: "/imgs/category-plotery.png",
+    img: "/imgs/kategoria-laser.webp",
   },
   {
-    title: "Generatory azotu",
-    slug: "/produkty/kategoria/generatory-azotu",
-    img: "/imgs/category-plotery.png",
+    title: "Wycinarki",
+    slug: "/produkty/kategoria/wycinarki",
+    img: "/brak-zdjecia.png",
   },
   {
-    title: "Gadżety",
-    slug: "/produkty/kategoria/gadżety",
-    img: "/imgs/category-plotery.png",
+    title: "Urządzenia do dezynsekcji",
+    slug: "/produkty/kategoria/urzadzenia-do-dezynsekcji",
+    img: "/brak-zdjecia.png",
   },
   {
-    title: "Consumable",
-    slug: "/produkty/kategoria/consumable",
-    img: "/imgs/category-plotery.png",
+    title: "Moduły",
+    slug: "/produkty/kategoria/moduly",
+    img: "/brak-zdjecia.png",
   },
 ];
 

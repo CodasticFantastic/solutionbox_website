@@ -9,11 +9,6 @@ const brandsConfig = [
     img: "/branding/coop/comagrav.jpg",
   },
   {
-    title: "Eagle",
-    slug: "/produkty/kategoria/eagle",
-    img: "/imgs/category-plotery.png",
-  },
-  {
     title: "Ser Tec",
     slug: "/produkty/kategoria/ser-tec",
     img: "/branding/coop/SER_TEC.png",
@@ -21,12 +16,7 @@ const brandsConfig = [
   {
     title: "FoxUv",
     slug: "/produkty/kategoria/foxuv",
-    img: "/imgs/category-plotery.png",
-  },
-  {
-    title: "Green Clean",
-    slug: "/produkty/kategoria/green-clean",
-    img: "/imgs/category-plotery.png",
+    img: "/brak-zdjecia.png",
   },
   {
     title: "Metis",
@@ -46,7 +36,7 @@ const brandsConfig = [
   {
     title: "An2Di",
     slug: "/produkty/kategoria/an2di",
-    img: "/imgs/category-plotery.png",
+    img: "/branding/coop/an2di.png",
   },
   {
     title: "Flux",
