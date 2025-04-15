@@ -41,7 +41,7 @@ const categoriesConfig = [
   {
     title: "Drukarki Hybrydowe",
     slug: "/produkty/kategoria/drukarki-hybrydowe",
-    img: "/brak-zdjecia.png",
+    img: "/imgs/kategoria-drukarki-hybrydowe.webp",
   },
   {
     title: "Lasery",
@@ -51,17 +51,17 @@ const categoriesConfig = [
   {
     title: "Wycinarki",
     slug: "/produkty/kategoria/wycinarki",
-    img: "/brak-zdjecia.png",
+    img: "/imgs/kategoria-wycinarki.webp",
   },
   {
     title: "Urządzenia do dezynsekcji",
     slug: "/produkty/kategoria/urzadzenia-do-dezynsekcji",
-    img: "/brak-zdjecia.png",
+    img: "/imgs/kategoria-urzadzenia-do-dezynsekcji.webp",
   },
   {
     title: "Moduły",
     slug: "/produkty/kategoria/moduly",
-    img: "/brak-zdjecia.png",
+    img: "/branding/solution-box-logo.svg",
   },
 ];
 

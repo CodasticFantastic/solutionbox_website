@@ -16,7 +16,7 @@ const brandsConfig = [
   {
     title: "FoxUv",
     slug: "/produkty/kategoria/foxuv",
-    img: "/brak-zdjecia.png",
+    img: "/branding/coop/fox-uv.svg",
   },
   {
     title: "Metis",

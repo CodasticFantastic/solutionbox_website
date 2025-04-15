@@ -14,20 +14,24 @@ export default function ProductContentSection({
   return (
     <section className={`${styles.productContentSection} container`}>
       <div className={styles.left}>
-        <section id="specyfikacja" className="scrollTo">
-          <h2>Specyfikacja</h2>
-          <div
-            className={styles.specificationData}
-            dangerouslySetInnerHTML={{ __html: productData.specification! }}
-          />
-        </section>
-        <section id="opis" className="scrollTo">
-          <h2>Opis Produktu</h2>
-          <div
-            className={styles.descriptionData}
-            dangerouslySetInnerHTML={{ __html: productData.description! }}
-          />
-        </section>
+        {productData.specification && (
+          <section id="specyfikacja" className="scrollTo">
+            <h2>Specyfikacja</h2>
+            <div
+              className={styles.specificationData}
+              dangerouslySetInnerHTML={{ __html: productData.specification }}
+            />
+          </section>
+        )}
+        {productData.description && (
+          <section id="opis" className="scrollTo">
+            <h2>Opis Produktu</h2>
+            <div
+              className={styles.descriptionData}
+              dangerouslySetInnerHTML={{ __html: productData.description }}
+            />
+          </section>
+        )}
       </div>
       <div className={styles.right}>
         <div className={styles.sticky}>
