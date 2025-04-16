@@ -6,7 +6,7 @@ const brandsConfig = [
   {
     title: "Comagrav",
     slug: "/produkty/kategoria/comagrav",
-    img: "/branding/coop/comagrav.jpg",
+    img: "/branding/coop/comagrav.webp",
   },
   {
     title: "Ser Tec",
@@ -31,7 +31,7 @@ const brandsConfig = [
   {
     title: "MyYard",
     slug: "/produkty/kategoria/myyard",
-    img: "/branding/coop/MYYARD.jpg",
+    img: "/branding/coop/my-yard.svg",
   },
   {
     title: "An2Di",

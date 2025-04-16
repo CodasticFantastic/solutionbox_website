@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./productsCategories.module.scss";
 import Button from "@/components/website/core/button/Button";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
@@ -67,8 +67,9 @@ const categoriesConfig = [
 
 export default function ProductsCategories() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = (direction: "left" | "right", shouldRestart = true) => {
     if (scrollContainerRef.current) {
       const scrollAmount = 300;
       scrollContainerRef.current.scrollBy({
@@ -76,7 +77,57 @@ export default function ProductsCategories() {
         behavior: "smooth",
       });
     }
+
+    if (shouldRestart) restartAutoScroll();
   };
+
+  // AUTO SCROLL LOGIC
+  const startAutoScroll = () => {
+    scrollIntervalRef.current = setInterval(() => {
+      const container = scrollContainerRef.current;
+      if (!container) return;
+
+      const isAtEnd =
+        container.scrollLeft + container.offsetWidth >=
+        container.scrollWidth - 1;
+
+      if (isAtEnd) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scroll("right");
+      }
+    }, 3000); // Scroll Duration
+  };
+
+  const stopAutoScroll = () => {
+    if (scrollIntervalRef.current) {
+      clearInterval(scrollIntervalRef.current);
+      scrollIntervalRef.current = null;
+    }
+  };
+
+  const restartAutoScroll = () => {
+    stopAutoScroll();
+    startAutoScroll();
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("mouseenter", stopAutoScroll);
+      container.addEventListener("mouseleave", startAutoScroll);
+    }
+
+    startAutoScroll();
+
+    return () => {
+      stopAutoScroll();
+      if (container) {
+        container.removeEventListener("mouseenter", stopAutoScroll);
+        container.removeEventListener("mouseleave", startAutoScroll);
+      }
+    };
+  }, []);
 
   return (
     <section className={styles.productsCategories}>
